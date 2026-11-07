@@ -207,18 +207,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-/* ================= Firebase & Cloud Init ================= */
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'night-island-cloud';
-const firebaseConfig = typeof __firebase_config !== 'undefined' 
-  ? JSON.parse(__firebase_config) 
-  : {
-      apiKey: "AIzaSyDemoPlaceholderOnly",
-      authDomain: "demo.firebaseapp.com",
-      projectId: "demo-app",
-      storageBucket: "demo.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "1:123456789:web:demo"
-    };
+/* ================== Firebase & Cloud Init ================== */
+const appId = 'night-island-cloud';
+const firebaseConfig = {
+  apiKey: "AIzaSyCExkWg_6C8Qh1kH4ER9JkHobsyCppXw9c",
+  authDomain: "night-island-64518.firebaseapp.com",
+  databaseURL: "https://night-island-64518-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "night-island-64518",
+  storageBucket: "night-island-64518.appspot.com",
+  messagingSenderId: "32568723154",
+  appId: "1:32568723154:web:035f7e4a7dc215c2facf0b"
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
