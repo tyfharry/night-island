@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>夜語島 Night Murmur Island</title>
+<title>夜語島 Night Murmur Island (Cloud Online)</title>
 <style>
 :root{--ink:#3b2a33;--line:#5a3f4d;--paper:#fff8fb;--pink:#f6c9db;--pink2:#ec9fbf;--lav:#cdc6f4;--blue:#3f74d0;--rose:#d9488f;--sh:3px 3px 0 rgba(59,42,51,.35)}
 *{box-sizing:border-box}
@@ -43,7 +43,6 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
 #animals{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);display:flex;gap:14px}
 #animals canvas{width:44px;height:50px;image-rendering:pixelated;cursor:pointer;transition:transform .15s;filter:drop-shadow(0 3px 0 rgba(0,0,0,.18))}
 #animals canvas.on{transform:translateY(-8px) scale(1.15)}
-.foot{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:11px;color:#fff;opacity:.85}
 /* hud */
 #hud{position:fixed;left:8px;top:8px;z-index:10;display:flex;gap:6px;align-items:center}
 .pill{background:rgba(255,248,251,.92);border:2px solid var(--line);padding:2px 9px;font-size:12px;font-weight:700;box-shadow:2px 2px 0 rgba(59,42,51,.25)}
@@ -52,11 +51,10 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
 #zoneBanner small{display:block;font-weight:400;font-size:11px;opacity:.7}
 #zoneBanner.on{opacity:1}
 #icons{position:fixed;right:10px;top:10px;z-index:10;display:flex;flex-direction:column;gap:12px;align-items:center}
-.icon{width:62px;text-align:center;font-size:11px;cursor:pointer;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.icon b{display:block;font-size:24px;line-height:30px}
+.icon{width:62px;text-align:center;font-size:11px;cursor:pointer;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);padding:3px 2px;border:1px dashed transparent}
+.icon:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.12)}
 .pxi{display:block;width:48px;height:48px;margin:0 auto 2px;image-rendering:pixelated;filter:drop-shadow(1px 2px 0 rgba(0,0,0,.3));transition:transform .12s}
 .icon:hover .pxi{transform:translateY(-2px) scale(1.06)}
-.icon{padding:3px 2px;border:1px dashed transparent}.icon:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.12)}
 #minimap{position:fixed;left:8px;bottom:44px;z-index:10;border:2px solid var(--line);background:#5ab4e5;image-rendering:pixelated;box-shadow:2px 2px 0 rgba(59,42,51,.25)}
 #nearby{position:fixed;left:50%;bottom:44px;transform:translateX(-50%);z-index:12;min-width:190px;background:var(--paper);border:2px solid var(--line);box-shadow:var(--sh);font-size:12px}
 #nearby .tbar{cursor:default;font-size:11px;padding:2px 6px}
@@ -98,7 +96,6 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
 .bub.heart{border:0;background:none;font-size:30px;padding:0;animation:pop .5s}
 @keyframes pop{0%{transform:scale(.2)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
 .mname{font-size:10px;opacity:.6;margin-bottom:1px}
-.typing .bub{opacity:.6}
 .bar{display:flex;gap:4px;padding:6px;border-top:2px solid var(--line);background:#fde9f1}
 .bar input{flex:1;min-width:0;border:2px solid var(--line);padding:4px 6px;outline:none}
 .bar .hb{border:2px solid var(--line);background:#fff;cursor:pointer;padding:0 6px}
@@ -121,10 +118,6 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
 .post:nth-child(3n+2){background:#d9f3ea;transform:rotate(.6deg)}.post:nth-child(3n){background:#ffe0ec;transform:rotate(-.6deg)}
 .post .meta{font-size:11px;opacity:.6;margin-top:3px}
 .cnt{font-size:11px;opacity:.6;text-align:right}
-/* race */
-.racewin{width:680px}
-.racewin canvas{display:block;width:100%;image-rendering:pixelated;background:#8fd16a}
-.rinfo{padding:8px 10px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 /* dpad */
 #dpad{position:fixed;left:14px;bottom:52px;z-index:15;display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:3px;opacity:.75}
 #dpad button{border:2px solid var(--line);background:rgba(255,248,251,.85);font-size:18px;touch-action:none}
@@ -150,10 +143,10 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
 <!-- LOGIN -->
 <div id="login">
   <div class="win">
-    <div class="tbar" style="cursor:default"><span class="ti">✦ 夜語島 · 連線中</span></div>
+    <div class="tbar" style="cursor:default"><span class="ti">✦ 夜語島 · 雲端連線版</span></div>
     <div class="body">
       <h1>夜語島</h1>
-      <div class="sub">Night Murmur Island · 曼谷 · 釜山 · 東京 · 河內</div>
+      <div class="sub">Night Murmur Island · Cloud Server Sync</div>
       <label class="f">名稱 Name</label>
       <input class="t" id="inName" maxlength="20" placeholder="最多8個中文字 / 20個英文字">
       <label class="f">此刻諗緊… What's on your mind</label>
@@ -164,14 +157,14 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
       <select class="t" id="inZone"><option value="hub">🏁 中央廣場</option><option value="bkk">🛕 曼谷 Bangkok</option><option value="pus">🌊 釜山 Busan</option><option value="tyo">⛩️ 東京 Tokyo</option><option value="han">🏮 河內 Hanoi</option></select>
       <div class="err" id="loginErr"></div>
       <button class="btn pri" id="goBtn" style="width:100%">登島 ▶</button>
-      <div style="font-size:11px;opacity:.6;text-align:center;margin-top:6px">揀一隻動物 ↓ · 本機遊戲 · 資料只存喺你部機</div>
+      <div style="font-size:11px;opacity:.6;text-align:center;margin-top:6px">雲端線上對接 · 複製網址畀朋友即可同場遊玩</div>
     </div>
   </div>
   <div id="animals"></div>
 </div>
 
 <!-- HUD -->
-<div id="hud" class="hidden"><span class="pill"><span class="dot"></span><span id="pcount">-</span></span><span class="pill" id="zonePill">-</span><span class="pill" id="netPill">💻 單機</span></div>
+<div id="hud" class="hidden"><span class="pill"><span class="dot"></span><span id="pcount">-</span></span><span class="pill" id="zonePill">-</span><span class="pill" id="netPill">☁️ Google Cloud</span></div>
 <div id="zoneBanner"></div>
 <div id="icons" class="hidden">
   <div class="icon" id="icLetters"><canvas class="pxi" data-i="letter" width="24" height="24"></canvas>feel.txt</div>
@@ -195,18 +188,129 @@ input.t:focus,textarea.t:focus{background:#fffdf0}
   <span id="clock">--:--</span>
 </div>
 <div id="startMenu" class="hidden">
-  <div class="side">夜語島 v1</div>
+  <div class="side">夜語島 Cloud</div>
   <div class="items">
     <div class="it" data-a="thought">💭 改想法</div>
     <div class="it" data-a="letters">✉ 信件</div>
     <div class="it" data-a="wall">📌 留言牆</div>
     <div class="it" data-a="race">🌀 迷宮賽跑</div>
     <div class="it" data-a="tp">🧭 傳送去其他城市</div>
-    <div class="it" data-a="online">🌐 同朋友線上玩</div>
+    <div class="it" data-a="online">🌐 邀請朋友連線</div>
     <div class="it" data-a="sound">🔊 聲音：開</div>
     <div class="it" data-a="leave">🚪 離開島嶼</div>
   </div>
 </div>
+
+<!-- Firebase SDKs -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+/* ================= Firebase & Cloud Init ================= */
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'night-island-cloud';
+const firebaseConfig = typeof __firebase_config !== 'undefined' 
+  ? JSON.parse(__firebase_config) 
+  : {
+      apiKey: "AIzaSyDemoPlaceholderOnly",
+      authDomain: "demo.firebaseapp.com",
+      projectId: "demo-app",
+      storageBucket: "demo.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:demo"
+    };
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+window.CloudNet = {
+  db,
+  auth,
+  appId,
+  user: null,
+  async init() {
+    try {
+      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+        await signInWithCustomToken(auth, __initial_auth_token);
+      } else {
+        await signInAnonymously(auth);
+      }
+      this.user = auth.currentUser;
+      this.bindCloudSync();
+    } catch(e) {
+      console.warn("Cloud Auth running in fallback local mode:", e);
+    }
+  },
+  bindCloudSync() {
+    if(!this.user) return;
+    const playersCol = collection(db, 'artifacts', appId, 'public', 'data', 'players');
+    onSnapshot(playersCol, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        const data = change.doc.data();
+        if(!data || data.id === me?.id) return;
+        if (change.type === "removed") {
+          window.onNet({ t: 'leave', from: change.doc.id });
+        } else {
+          window.onState({ ...data, from: data.id });
+        }
+      });
+    }, (err) => console.error("Players sync error", err));
+
+    const messagesCol = collection(db, 'artifacts', appId, 'public', 'data', 'messages');
+    onSnapshot(messagesCol, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          const m = change.doc.data();
+          if (m && m.to === me?.id) {
+            window.onNet(m);
+          }
+        }
+      });
+    }, (err) => console.error("Messages sync error", err));
+
+    const wallCol = collection(db, 'artifacts', appId, 'public', 'data', 'wall');
+    onSnapshot(wallCol, (snapshot) => {
+      const list = [];
+      snapshot.forEach(doc => list.push(doc.data()));
+      if (list.length) {
+        window.wall = list.sort((a,b) => b.time - a.time);
+        if (window.wallWin) window.renderWall();
+      }
+    }, (err) => console.error("Wall sync error", err));
+  },
+  async updateState(st) {
+    if (!this.user || !me) return;
+    try {
+      const playerDoc = doc(db, 'artifacts', appId, 'public', 'data', 'players', me.id);
+      await setDoc(playerDoc, { ...st, lastSeen: Date.now() });
+    } catch(e){}
+  },
+  async sendMessage(msg) {
+    if (!this.user || !me) return;
+    try {
+      const messagesCol = collection(db, 'artifacts', appId, 'public', 'data', 'messages');
+      await addDoc(messagesCol, { ...msg, timestamp: Date.now() });
+    } catch(e){}
+  },
+  async postWall(post) {
+    if (!this.user || !me) return;
+    try {
+      const wallCol = collection(db, 'artifacts', appId, 'public', 'data', 'wall');
+      await addDoc(wallCol, post);
+    } catch(e){}
+  },
+  async leave() {
+    if (!this.user || !me) return;
+    try {
+      const playerDoc = doc(db, 'artifacts', appId, 'public', 'data', 'players', me.id);
+      await deleteDoc(playerDoc);
+    } catch(e){}
+  }
+};
+
+window.CloudNet.init();
+</script>
 
 <script>
 'use strict';
@@ -245,12 +349,10 @@ function makeAnimal(a,f){
  const triEar=(x0,dir,top,h,c,inner,tip)=>{for(let k=0;k<h;k++){const w=1+Math.floor(k*0.75);for(let i=0;i<w;i++){const x=dir>0?x0+i:x0-i;P(x,top+k,(k===0&&tip)?tip:(i>0&&i<w-1&&k>1&&inner)?inner:c)}}};
  const D='#2a1a22',hc=a.h,mc=a.m,bc=a.b,e2=a.e2||shade(hc,-.25);
  const armY=f===1?18:f===3?20:19,armY2=f===1?20:f===3?18:19;
- // tails (behind)
  if(a.ear==='fox'){E(18.5,19.5,2.6,3.6,hc,1);E(19.2,16.6,1.5,1.4,'#fff7ee')}
  if(a.ear==='cat'){[[18,21],[19,20],[19,19],[20,18],[20,17]].forEach(([x,y])=>P(x,y,shade(hc,-.12)))}
  if(a.ear==='bunny')E(17.6,21.2,1.7,1.6,'#ffffff');
  if(a.ear==='flop'){[[18,20],[19,19],[19,18]].forEach(([x,y])=>P(x,y,e2))}
- // ears
  switch(a.ear){
   case'bear':E(5,5.2,2.8,2.7,hc,1);E(17,5.2,2.8,2.7,hc,1);E(5.2,5.5,1.4,1.3,mc);E(16.8,5.5,1.4,1.3,mc);break;
   case'panda':E(5,5.2,2.8,2.7,D);E(17,5.2,2.8,2.7,D);break;
@@ -259,46 +361,39 @@ function makeAnimal(a,f){
   case'bunny':E(8,4.6,1.9,4.6,hc,1);E(14,4.6,1.9,4.6,hc,1);E(8,5.2,.8,3.2,mc);E(14,5.2,.8,3.2,mc);break;
   case'tuft':P(10,3,e2);P(11,2,e2);P(11,3,e2);P(12,3,e2);P(12,2,shade(e2,.2));break;
  }
- // body + arms + feet
  const fc=a.ear==='panda'?D:shade(a.ear==='tuft'?e2:hc,-.22);
  const fl=f===1?22:23,fr=f===3?22:23;Rr(7,fl,3,2,fc);Rr(12,fr,3,2,fc);
  E(11,19.4,5.1,3.7,bc,1);Rr(9,16,4,1,shade(bc,.35));P(11,18,shade(bc,.45));P(11,20,shade(bc,.45));
  E(5.6,armY,1.6,2.1,a.ear==='panda'?D:hc,1);E(16.4,armY2,1.6,2.1,a.ear==='panda'?D:hc,1);
- // head
  E(11,10.4,8.3,6.2,hc,1);
  if(a.ear==='flop'){E(3.6,10.5,2,3.8,e2,1);E(18.4,10.5,2,3.8,e2,1)}
  if(a.ear==='fox')E(11,13.6,6.2,2.7,'#fff3e3');
  if(a.ear==='panda'){E(7.4,10.6,2,1.7,D);E(14.6,10.6,2,1.7,D)}
- // eyes w/ shine
  const ey=10;[[7,ey],[14,ey]].forEach(([x,y])=>{Rr(x,y,2,2,D);P(x,y,'#ffffff')});
- // blush
  Rr(4,13,2,1,'#f6a0b6');Rr(16,13,2,1,'#f6a0b6');
- // muzzle / beak
  if(a.ear==='tuft'){Rr(10,12,2,2,e2);P(10,13,shade(e2,-.2));P(11,13,shade(e2,-.2))}
  else{if(a.ear!=='fox')E(11,13.4,2.7,1.7,mc);P(10,12,'#4a2a35');P(11,12,'#4a2a35');P(10,11,shade(hc===mc?'#cccccc':mc,.5));P(9,14,'#7a4a55');P(12,14,'#7a4a55');P(10,15,'#7a4a55');P(11,15,'#7a4a55')}
- // outline
  const out=g.slice(),OL='#3b2333';
  for(let y=0;y<H;y++)for(let x=0;x<W;x++){if(g[y*W+x])continue;for(const[dx,dy]of[[1,0],[-1,0],[0,1],[0,-1]]){const X=x+dx,Y=y+dy;if(X>=0&&Y>=0&&X<W&&Y<H&&g[Y*W+X]){out[y*W+x]=OL;break}}}
  return mk(W,H,(x,r)=>{for(let y=0;y<H;y++)for(let i=0;i<W;i++)if(out[y*W+i])r(i,y,1,1,out[y*W+i])});
 }
 const SPR={};for(const k of AKEYS)SPR[k]=[0,1,2,3].map(f=>makeAnimal(ANIMALS[k],f));
-function avatarCanvas(k){const c=document.createElement('canvas');c.width=SW;c.height=SH;c.getContext('2d').drawImage(SPR[k][0],0,0);return c}
+function avatarCanvas(k){const c=document.createElement('canvas');c.width=SW;c.height=SH;c.getContext('2d').drawImage(SPR[k]?SPR[k][0]:SPR['bear'][0],0,0);return c}
 
-/* ================= zones & map ================= */
+/* ================= map & zones ================= */
 const T=16,MW=84,MH=60,WW=MW*T,WH=MH*T;
 const HUB={x:41.5,y:30.5};
 const MAZE={x0:34,y0:24,W:15,H:13};MAZE.ex=MAZE.x0+7;
 const inMaze=(px,py)=>{const tx=Math.floor(px/16),ty=Math.floor(py/16);return tx>=MAZE.x0&&tx<MAZE.x0+MAZE.W&&ty>=MAZE.y0&&ty<MAZE.y0+MAZE.H};
 const SPAWN={x:41.5*16,y:38.4*16},PODIUM={x:53.25*16,y:32*16};
 const ZONES={
- hub:{name:'中央廣場',en:'Central Plaza · Melbourne',icon:'🚋',sub:'墨爾本風味 · 電車 · 維多利亞式車站 · 塗鴉巷 · 咖啡 · 樹籬迷宮'},
+ hub:{name:'中央廣場',en:'Central Plaza',icon:'🚋',sub:'墨爾本風味 · 電車 · 維多利亞式車站 · 塗鴉巷 · 咖啡 · 樹籬迷宮'},
  bkk:{name:'曼谷',en:'Bangkok',icon:'🛕',sub:'金色廟宇 · 運河 · 嘟嘟車 · 夜市',g:['#9fd66c','#8bc65a'],tx:16,ty:13},
  pus:{name:'釜山',en:'Busan',icon:'🌊',sub:'廣安里海灘 · 廣安大橋 · 海岸膠囊列車 · 山城彩屋 · 魚市場',g:['#8ed69b','#78c487'],tx:68,ty:16},
  tyo:{name:'東京',en:'Tokyo',icon:'⛩️',sub:'鳥居 · 櫻花 · 鐵塔 · 拉麵',g:['#a9db8c','#94ca78'],tx:19,ty:45},
  han:{name:'河內',en:'Hanoi',icon:'🏮',sub:'大教堂 · 火車啤酒街 · 下龍灣 · 湖畔紅橋 · 河粉',g:['#b6d872','#a0c55f'],tx:54,ty:46}
 };
 function zoneAt(px,py){const tx=px/T,ty=py/T,dx=tx-HUB.x,dy=ty-HUB.y;if(Math.abs(dx)<=15.6&&Math.abs(dy)<=10.2)return'hub';return dy<0?(dx<0?'bkk':'pus'):(dx<0?'tyo':'han')}
-// tiles: 0 sea 1 grass 2 road 3 track 4 water 5 bridge 6 beach 7 stone 8 terracotta 9 plaza 10 rail 11 redbridge
 const tiles=new Uint8Array(MW*MH);
 const gt=(x,y)=>(x<0||y<0||x>=MW||y>=MH)?0:tiles[y*MW+x];
 const st=(x,y,v)=>{if(x>=0&&y>=0&&x<MW&&y<MH)tiles[y*MW+x]=v};
@@ -313,36 +408,22 @@ function makeMaze(seed){const Rm=mulberry32(seed);const{x0,y0,W,H}=MAZE;
 const fillE=(cx,cy,rx,ry,v,only)=>{for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){const dx=(x+.5-cx)/rx,dy=(y+.5-cy)/ry;if(dx*dx+dy*dy<=1&&(only==null||only.includes(gt(x,y))))st(x,y,v)}};
 (function genMap(){
  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){const d=Math.min(x,y,MW-1-x,MH-1-y);const w=2.2+Math.sin(x*.5)*.8+Math.cos(y*.6+x*.25)*.7;st(x,y,d>w?1:0)}
- // roads
  fillR(4,28,79,30,2,[1]);fillR(40,3,42,57,2,[1]);
- // hub
  fillR(27,21,57,40,9,[1,2]);fillR(27,39,57,40,12,[9]);
  makeMaze(20261107);
- // Bangkok: temple courtyard, canal, market street
- fillR(7,5,24,15,2,[1]);
- fillR(3,19,39,20,4,[1,2]);fillR(14,19,15,20,5);fillR(40,19,42,20,5);
- fillR(6,23,25,24,2,[1]);
- // Busan: Gwangalli bay, then beach along sea in NE quadrant
+ fillR(7,5,24,15,2,[1]);fillR(3,19,39,20,4,[1,2]);fillR(14,19,15,20,5);fillR(40,19,42,20,5);fillR(6,23,25,24,2,[1]);
  fillE(71.5,3.5,10,5,0,[1]);
  for(let y=1;y<27;y++)for(let x=44;x<MW;x++){if(gt(x,y)!==1)continue;let near=false;for(let j=-3;j<=3&&!near;j++)for(let i=-3;i<=3;i++)if(gt(x+i,y+j)===0){near=true;break}if(near)st(x,y,6)}
- fillR(58,21,72,22,2,[1]);
- // Tokyo: stone streets
- fillR(6,38,30,48,7,[1,2]);fillR(17,49,19,55,7,[1]);
- // Hanoi: rail, lake, terracotta street
- fillR(55,37,81,37,10,[1,2]);
- fillE(61.5,46.5,6.5,4.4,4,[1,2]);fillE(61.5,46.5,1.8,1.3,1,[4]);fillR(61,41,61,45,11,[4,1]);
- fillR(45,51,72,52,8,[1,2]);
- fillE(81,49.5,8,8.5,0,[1,2,8]);
+ fillR(58,21,72,22,2,[1]);fillR(6,38,30,48,7,[1,2]);fillR(17,49,19,55,7,[1]);
+ fillR(55,37,81,37,10,[1,2]);fillE(61.5,46.5,6.5,4.4,4,[1,2]);fillE(61.5,46.5,1.8,1.3,1,[4]);fillR(61,41,61,45,11,[4,1]);
+ fillR(45,51,72,52,8,[1,2]);fillE(81,49.5,8,8.5,0,[1,2,8]);
 })();
-// props
+
 const props=[],blocks=[],labels=[],POI=[];
-function prop(spr,tx,ty,o={}){ // tx,ty: tile of bottom-left
- const x=tx*T+(o.ox||0),y=ty*T+(o.oy||0);const p={spr,x,y:y-spr.height,w:spr.width,h:spr.height,sy:y+(o.sortAdj||0),after:o.after};props.push(p);
- if(o.block){const b=o.block;blocks.push({x:x+b[0],y:y-b[1]-b[3],w:b[2],h:b[3]})}
- return p}
+function prop(spr,tx,ty,o={}){const x=tx*T+(o.ox||0),y=ty*T+(o.oy||0);const p={spr,x,y:y-spr.height,w:spr.width,h:spr.height,sy:y+(o.sortAdj||0),after:o.after};props.push(p);if(o.block){const b=o.block;blocks.push({x:x+b[0],y:y-b[1]-b[3],w:b[2],h:b[3]})}return p}
 function blockR(x,y,w,h){blocks.push({x,y,w,h})}
 
-/* -------- sprite factory -------- */
+/* -------- sprites -------- */
 const tri=(r,cx,y,w,h,c)=>{for(let i=0;i<h;i++){const ww=Math.max(1,Math.round(w*(i+1)/h));r(cx-ww/2,y+i,ww,1,c)}};
 const trap=(r,cx,y,tw,bw,h,c)=>{for(let i=0;i<h;i++){const ww=Math.round(tw+(bw-tw)*i/Math.max(1,h-1));r(cx-ww/2,y+i,ww,1,c)}};
 const circ=(r,cx,cy,rad,c)=>{for(let y=-rad;y<=rad;y++)for(let x=-rad;x<=rad;x++)if(x*x+y*y<=rad*rad+rad*.8)r(cx+x,cy+y,1,1,c)};
@@ -386,10 +467,7 @@ S.pho=()=>mk(40,30,(x,r)=>{r(2,10,36,14,'#3b2a33');r(3,11,34,12,'#d94f3a');r(3,1
 S.hat=()=>mk(20,14,(x,r)=>{tri(r,10,0,20,9,'#3b2a33');tri(r,10,1,17,7,'#f2dfa0');r(1,9,18,2,'#3b2a33');r(3,10,14,4,'#8a5a34');r(4,11,12,2,'#f5a623')});
 S.mailbox=()=>mk(16,26,(x,r)=>{r(7,12,3,14,'#5b3a24');r(1,2,14,12,'#3b2a33');r(2,3,12,10,'#d8352a');r(2,3,12,3,'#ef6b5e');r(4,8,8,2,'#2a1a22');r(13,0,2,8,'#3b2a33');r(13,0,4,3,'#ffd23f')});
 S.board=()=>mk(36,32,(x,r)=>{r(4,16,3,16,'#5b3a24');r(29,16,3,16,'#5b3a24');r(0,0,36,20,'#3b2a33');r(1,1,34,18,'#b98552');r(3,3,9,7,'#fff6a8');r(14,4,8,6,'#ffd0e1');r(24,3,9,8,'#cdeee3');r(5,11,8,6,'#cdeee3');r(16,12,10,5,'#fff6a8');[[6,3],[17,4],[28,3]].forEach(([a,b])=>r(a,b,2,2,'#d8352a'))});
-S.lamp=()=>mk(10,32,(x,r)=>{r(4,8,2,24,'#3b2a33');r(1,0,8,9,'#3b2a33');r(2,1,6,7,'#ffe27a');r(2,29,6,3,'#3b2a33')});
 S.bench=()=>mk(28,14,(x,r)=>{r(0,2,28,3,'#3b2a33');r(1,3,26,1,'#a8743f');r(0,7,28,3,'#3b2a33');r(1,8,26,1,'#a8743f');r(2,10,2,4,'#3b2a33');r(24,10,2,4,'#3b2a33')});
-S.flag=(c)=>mk(16,30,(x,r)=>{r(1,0,2,30,'#3b2a33');r(3,1,12,8,'#3b2a33');r(3,2,11,6,c)});
-
 S.station=()=>mk(96,74,(x,r)=>{const D='#3b2a33',W='#e7b45f',C='#f6ead0',G='#5fae8f';
  r(0,28,96,46,D);r(1,29,94,44,W);r(0,26,96,4,D);r(1,27,94,2,C);r(1,50,94,2,C);
  r(33,12,30,62,D);r(34,13,28,60,W);circ(r,48,13,11,D);circ(r,48,13,10,G);r(34,13,28,3,D);r(35,14,26,1,C);circ(r,45,9,3,'#86cdb0');
@@ -450,7 +528,6 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
 
 /* -------- place props -------- */
 (function placeProps(){
- // HUB · Melbourne flavour
  prop(S.station(),27.1,27,{block:[4,0,88,20]});
  prop(S.coffee(),27.4,33,{block:[1,0,32,8]});
  prop(S.mailbox(),31.6,31,{block:[2,0,12,4]});POI.push({type:'mail',x:31.6*T+8,y:31*T+4,label:'📮 信箱'});
@@ -463,14 +540,12 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
  [[33.6,23],[49,23],[56,23],[33,38.6]].forEach(([a,b])=>prop(S.vlamp(),a,b,{block:[6,0,6,3]}));
  prop(S.bench(),37,22.9);prop(S.bench(),44,22.9);
  labels.push({x:30.1*T,y:22.2*T,t:'🚉 維多利亞式車站'},{x:29.4*T,y:30.6*T,t:'☕ Flat white'},{x:53*T,y:35.3*T,t:'🎨 塗鴉巷 Laneway'},{x:41.5*T,y:41.6*T,t:'🚋 電車站'},{x:(MAZE.ex-4.5)*T,y:(MAZE.y0+MAZE.H+.9)*T,t:'🌀 樹籬迷宮'});
- // BANGKOK
  prop(S.temple(),8,14,{block:[6,0,148,22]});
  prop(S.stupa(),5,12,{block:[3,0,22,6]});prop(S.stupa(),20,12,{block:[3,0,22,6]});
  prop(S.tuktuk(),23,27,{block:[2,0,28,6]});prop(S.tuktuk(),33,18,{block:[2,0,28,6]});
  prop(S.cart('#e04f4f'),8,25,{block:[3,0,24,5]});prop(S.cart('#2e9b5f'),14,25,{block:[3,0,24,5]});prop(S.cart('#f2a516'),20,25,{block:[3,0,24,5]});
  prop(S.boat(),6,20,{oy:-4});prop(S.boat(),26,20,{oy:-2});
  labels.push({x:16*T,y:3*T,t:'🛕 曼谷 Bangkok'},{x:14*T,y:22.6*T,t:'夜市'});
- // BUSAN
  const pal=[['#f6c9db','#d9488f'],['#cdeee3','#2f8f5b'],['#fff1a8','#e0902a'],['#cfe0ff','#3f74d0'],['#f7d0b0','#c4552d'],['#e2d5ff','#7b5bd6']];
  for(let row=0;row<4;row++)for(let i=0;i<7;i++){const[w,rf]=pal[(row*3+i)%pal.length];prop(S.house(w,rf),45+i*2+(row%2),9+row*3,{block:[1,0,26,10]})}
  prop(S.lighthouse(),78.5,19.5,{block:[4,0,14,6]});
@@ -480,7 +555,6 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
  for(let i=0;i<6;i++)prop(S.umbrella(uc[i%5]),62.8+i*3,10.7);
  prop(S.fishstall(),58,25,{block:[2,0,36,6]});prop(S.fishstall(),62,25,{block:[2,0,36,6]});
  labels.push({x:51*T,y:5.6*T,t:'🌊 釜山 Busan · 🏘️ 山城彩屋'},{x:61*T,y:23.4*T,t:'魚市場'},{x:71.5*T,y:2.2*T,t:'🌉 廣安大橋'},{x:71*T,y:8.9*T,t:'🏖️ 廣安里海灘 Gwangalli'},{x:71*T,y:14.3*T,t:'🚡 海岸膠囊列車 Sky Capsule'});
- // TOKYO
  prop(S.torii(),16,50,{block:[9,0,6,4]});blockR(16*T+42,50*T-4,6,4);
  prop(S.shrine(),14,57,{block:[4,0,64,14]});
  prop(S.tower(),8,47,{block:[4,0,36,8]});
@@ -488,7 +562,6 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
  prop(S.ramen(),25,46,{block:[1,0,38,8]});
  for(let i=0;i<6;i++){prop(S.lantern(),8+i*4,38,{oy:-18})}
  labels.push({x:19*T,y:35.6*T,t:'⛩️ 東京 Tokyo'},{x:26.3*T,y:42.6*T,t:'拉麵'});
- // HANOI
  prop(S.pagoda(),60.6,48,{oy:-2,block:[4,0,22,6]});
  prop(S.cathedral(),44.2,49,{block:[2,0,76,14]});
  for(let i=0;i<5;i++){const[w,sh]=[['#f2d16b','#3f8f5a'],['#f7c6a5','#3f74d0'],['#d9efe0','#b5402e'],['#f6e3a1','#2f8f5b'],['#efc7d9','#3f8f5a']][i];prop(S.tube(w,sh),59+i*2.6,35.9,{block:[0,0,26,8]})}
@@ -501,7 +574,7 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
  [['#d8352a',47,52.6],['#3f74d0',70,41.5],['#2f8f5b',57,52.6],['#f2a516',68,52.6],['#7b5bd6',52,42]].forEach(([c,a,b])=>prop(S.moto(c),a,b,{block:[2,0,20,5]}));
  for(let i=0;i<7;i++)prop(S.lantern(),46+i*4,53.6,{oy:-22});
  labels.push({x:55*T,y:44.3*T,t:'🏮 河內 Hanoi'},{x:63.6*T,y:43.6*T,t:'湖'},{x:65*T,y:32.1*T,t:'🍺 火車啤酒街 Train Street'},{x:46.7*T,y:42.1*T,t:'⛪ 河內大教堂'},{x:78*T,y:41.3*T,t:'⛰️ 下龍灣 Ha Long Bay'});
- // trees, by zone
+
  const R=mulberry32(84);const taken=[];
  const reserved=[[25,19,59,42],[4,3,26,16],[3,22,30,27],[44,5,62,20],[56,23,68,27],[60,0,84,24],[5,35,31,58],[44,30,84,58]];
  for(let n=0;n<900&&taken.length<210;n++){
@@ -522,11 +595,10 @@ S.banner=()=>mk(96,40,(x,r)=>{const D='#3b2a33';r(4,6,3,34,'#5b3a24');r(89,6,3,3
   if(q>.93)spr=S.rock();
   prop(spr,x,y+1,{ox:-2,block:[spr.width/2-4,0,8,5]});
  }
- // Tokyo extra sakura line along stone road
  for(let i=0;i<5;i++)prop(S.sakura(),7+i*5,52,{block:[6,0,8,5]});
 })();
 
-/* -------- background render -------- */
+/* -------- bg -------- */
 const BG=document.createElement('canvas');BG.width=WW;BG.height=WH;const BGC=BG.getContext('2d');
 function paintTile(tx,ty,R){const c=BGC;const r=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h)};
   const v=gt(tx,ty),X=tx*T,Y=ty*T;const z=zoneAt(X+8,Y+8);const zg=(ZONES[z].g)||['#a3d877','#8fc765'];
@@ -559,28 +631,28 @@ function walkable(x,y){
 }
 function randomSpot(zone){for(let i=0;i<400;i++){let x,y;if(zone&&ZONES[zone].tx!=null){x=(ZONES[zone].tx+rand(-11,11))*T;y=(ZONES[zone].ty+rand(-8,8))*T}else if(zone==='hub'){x=(HUB.x+rand(-11,11))*T;y=(HUB.y+rand(-8,8))*T}else{x=rand(3,MW-3)*T;y=rand(3,MH-3)*T}if(walkable(x,y)&&!inMaze(x,y)&&(!zone||zoneAt(x,y)===zone))return{x,y}}return{x:HUB.x*T,y:(HUB.y+7.5)*T}}
 
-/* ================= people ================= */
+/* ================= state & actors ================= */
 const NAMES=['豆腐花','夜貓','檸檬茶','菠蘿包','雲吞','星星','雞蛋仔','牛奶糖','慢慢','阿Ken','Momo','小熊','芝麻','奶茶','Sunny','布甸','波子','Leo','魚蛋','番薯','Kiki','阿龍','糯米','Toby','冬菇','Yuki','阿Mi','蛋撻'];
 const THOUGHTS={
- bkk:['想食芒果糯米飯','曼谷好熱但好開心','坐嘟嘟車好刺激','夜市行到腳軟','泰式奶茶要走冰','喺運河邊吹下風'],
- pus:['廣安大橋夜景好正','坐咗膠囊列車好可愛','廣安里海灘踩水','海邊嘅風好舒服','想食炸雞配啤酒','爬完樓梯腳好痛','魚市場好多嘢食','聽緊海浪聲','彩色屋好似積木'],
- tyo:['櫻花開咗啦','便利店宵夜最正','想食一碗拉麵','搭尾班車返屋企','販賣機好多嘢揀','鐵塔夜景好靚'],
- han:['火車街飲啤酒好刺激','下龍灣啲石山好壯觀','大教堂門口飲咖啡','滴漏咖啡好濃','河粉一碗唔夠','電單車多到數唔晒','湖邊散步好舒服','火車喺門口經過','買咗頂草帽'],
- hub:['要杯 flat white 先醒','一日四季，帶定外套','等緊電車','巷仔啲塗鴉好靚','車站個鐘好有型','brunch 食咩好','迷宮好易蕩失路'],
- any:['今晚月光好靚','有冇人未瞓','聽日唔想返工','想去旅行','失眠第三晚','好掛住屋企','有冇人一齊跑步','我隻狗霸咗我張床','啱啱食完宵夜','聽緊歌發吓呆']
+ bkk:['想食芒果糯米飯','曼谷好熱但好開心','坐嘟嘟車好刺激','夜市行到腳軟','泰式奶茶要走冰'],
+ pus:['廣安大橋夜景好正','坐咗膠囊列車好可愛','廣安里海灘踩水','海邊嘅風好舒服','想食炸雞配啤酒'],
+ tyo:['櫻花開咗啦','便利店宵夜最正','想食一碗拉麵','搭尾班車返屋企','販賣機好多嘢揀'],
+ han:['火車街飲啤酒好刺激','下龍灣啲石山好壯觀','大教堂門口飲咖啡','滴漏咖啡好濃'],
+ hub:['要杯 flat white 先醒','一日四季，帶定外套','等緊電車','巷仔啲塗鴉好靚','迷宮好易蕩失路'],
+ any:['今晚月光好靚','有冇人未瞓','聽日唔想返工','想去旅行','失眠第三晚','好掛住屋企']
 };
 const BRAIN={
  greet:['hi hi～','你好呀','hello 👋','嗨，你都未瞓？','哈囉～'],
- generic:['係咩','哈哈哈','真係㗎？','我都係咁諗','講多啲聽下','嗯嗯','好得意喎','你呢？','明白㗎','haha same','原來係咁','我都試過','笑死','唔係掛','好正','都幾好'],
+ generic:['係咩','哈哈哈','真係㗎？','我都係咁諗','講多啲聽下','好得意喎','你呢？','明白㗎','haha same','原來係咁'],
  q:['我都唔知喎','可能係啩','你估下 😏','係呀','唔係呀','睇心情','你覺得呢？'],
- run:['好呀！迷宮入口等 🌀','跑就跑，輸咗唔好喊','我好易蕩失路㗎…不過OK','小心啲香蕉呀，入口見'],
+ run:['好呀！迷宮入口等 🌀','跑就跑，輸咗唔好喊','我好易蕩失路㗎…不過OK'],
  heart:['❤️','嘻嘻 ❤️','多謝你個心心','🥰'],
  bye:['我要瞓啦，拜拜👋','頂唔順喇 瞓先 晚安','我要走喇，好開心識到你','拜拜～下次再傾'],
- ask:['你做咩咁夜未瞓？','你今日過成點？','你鍾意食咩宵夜？','你平時鍾意做咩？','最近有冇睇咩劇？','你最鍾意島上邊個城市？','你去過{z}未？'],
- open:['喂～你好','你個想法好得意','hi，可以傾下偈嗎','你好呀，見你都喺度','有冇興趣傾下？']
+ ask:['你做咩咁夜未瞓？','你今日過成點？','你鍾意食咩宵夜？','你平時鍾意做咩？'],
+ open:['喂～你好','你個想法好得意','hi，可以傾下偈嗎','你好呀，見你都喺度']
 };
-const LETTERS=['今晚啲風好舒服，希望你都瞓得好。','唔知你係邊個，但祝你聽日順順利利。','我今日終於鼓起勇氣辭職，有啲驚但都幾開心。','如果你都覺得好攰，記得休息下，唔使咁堅強。','啱啱喺河內湖邊見到隻貓，佢望住我好耐。','有時陌生人嘅一句說話，會比熟人更加暖。','聽日落雨，記得帶遮呀。','今日喺曼谷夜市食咗好好味嘅芒果糯米飯，分享畀你。','東京嘅櫻花落晒落地，好似粉紅色地氈。','釜山個海好藍，好想你都睇到。'];
-const LREPLY=['收到你封信，好開心 🙂','多謝你，你講得啱。','你封信令我今晚冇咁孤單。','我都係咁諗！希望你一切都好。','好耐冇收過信，多謝你諗起陌生人。'];
+const LETTERS=['今晚啲風好舒服，希望你都瞓得好。','唔知你係邊個，但祝你聽日順順利利。','我今日終於鼓起勇氣辭職，有啲驚但都幾開心。','如果你都覺得好攰，記得休息下，唔使咁堅強。','啱啱喺河內湖邊見到隻貓，佢望住我好耐。'];
+const LREPLY=['收到你封信，好開心 🙂','多謝你，你講得啱。','你封信令我今晚冇咁孤單。','我都係咁諗！希望你一切都好。'];
 
 let me=null;const bots=[],remotes=new Map();
 function newBot(zone){
@@ -590,15 +662,14 @@ function newBot(zone){
  bots.push(b);return b}
 const allPeople=()=>[me,...bots,...remotes.values()].filter(Boolean);
 
-/* ================= state ================= */
 let camSX=null,camSY=null,lastDt=1;let inWorld=false,Z=3,Zcur=3,dpr=1,camX=0,camY=0,lastZone=null;
 const held=new Set();
 const chats=new Map();let activeChat=null,extra=0,extraInUse=false,zTop=100;
 const race={queue:[],st:null,confetti:[],qSince:0};
 let letters=store.get('ni_letters',[]),wall=store.get('ni_wall',null),lastLetterSent=0;
-if(!wall){wall=[{n:'雲吞',t:'曼谷夜市個芒果糯米飯真係正',z:'bkk',time:Date.now()-36e5},{n:'Yuki',t:'東京鐵塔下面有部販賣機有熱可可',z:'tyo',time:Date.now()-72e5},{n:'波子',t:'有冇人約迷宮賽跑？小心香蕉',z:'hub',time:Date.now()-18e5},{n:'奶茶',t:'釜山燈塔睇日落一流',z:'pus',time:Date.now()-9e6},{n:'阿Mi',t:'河內個湖晚上好靜，好適合發呆',z:'han',time:Date.now()-5e6}];store.set('ni_wall',wall)}
+if(!wall){wall=[{n:'雲吞',t:'曼谷夜市個芒果糯米飯真係正',z:'bkk',time:Date.now()-36e5},{n:'Yuki',t:'東京鐵塔下面有部販賣機有熱可可',z:'tyo',time:Date.now()-72e5}];store.set('ni_wall',wall)}
 
-/* ================= login ================= */
+/* ================= login & network bindings ================= */
 const prof=store.get('ni_profile',{name:'',thought:'',gender:'m',animal:'bear',zone:'hub'});
 let selAnimal=prof.animal||'bear',selGender=prof.gender||'m';
 (function initLogin(){
@@ -609,77 +680,54 @@ let selAnimal=prof.animal||'bear',selGender=prof.gender||'m';
  for(let i=0;i<9;i++){const f=el('div','float',esc(all[i%all.length]));f.style.left=rand(4,80)+'%';f.style.top=rand(8,70)+'%';f.style.animationDuration=rand(8,16)+'s';f.style.animationDirection=Math.random()<.5?'alternate':'alternate-reverse';L.appendChild(f)}
  $('#goBtn').onclick=enterWorld;$('#inName').addEventListener('keydown',e=>{if(e.key==='Enter')enterWorld()});
 })();
+
 function validName(n){if(!n)return'請輸入名稱';const cjk=(n.match(/[㐀-鿿豈-﫿]/g)||[]).length;if(cjk>8)return'中文名最多8個字';if(n.length>20)return'名稱最多20個字';return''}
 function enterWorld(){
  const name=$('#inName').value.trim(),thought=$('#inThought').value.trim()||'發緊呆…';const er=validName(name);if(er){$('#loginErr').textContent='⚠ '+er;return}
  const zone=$('#inZone').value;store.set('ni_profile',{name,thought,gender:selGender,animal:selAnimal,zone});
  const p=zone==='hub'?{x:SPAWN.x,y:SPAWN.y}:randomSpot(zone);
- me={id:'p'+Math.random().toString(36).slice(2,9),kind:'me',name,thought,gender:selGender,animal:selAnimal,x:p.x,y:p.y,dir:1,moving:false,anim:0,alpha:1};
- if(!bots.length){['bkk','pus','tyo','han'].forEach(z=>{for(let i=0;i<4;i++)newBot(z)});for(let i=0;i<2;i++)newBot('hub');bots.forEach(b=>b.alpha=1)}
- if(!race.queue.length)botJoinQueueSilent(pick(bots));
+ me={id:'p_'+Math.random().toString(36).slice(2,9),kind:'me',name,thought,gender:selGender,animal:selAnimal,x:p.x,y:p.y,dir:1,moving:false,anim:0,alpha:1};
+ if(!bots.length){['bkk','pus','tyo','han'].forEach(z=>{for(let i=0;i<2;i++)newBot(z)});for(let i=0;i<2;i++)newBot('hub');bots.forEach(b=>b.alpha=1)}
  $('#login').classList.add('hidden');['#hud','#icons','#minimap','#nearby','#taskbar','#hint'].forEach(s=>$(s).classList.remove('hidden'));
  if('ontouchstart' in window)$('#dpad').classList.remove('hidden');
  inWorld=true;lastZone=null;resize();setTimeout(()=>$('#hint').style.opacity=0,9000);
- scheduleBotEvents();bcPost({t:'hello'});syncPeers();blip(523,.08);setTimeout(()=>blip(784,.1),90);
+ scheduleBotEvents();
+ broadcastState();
+ blip(523,.08);setTimeout(()=>blip(784,.1),90);
 }
 
-/* ================= network: multi-tab (BroadcastChannel) + online (claude.ai room) ================= */
-const NET={bc:null,room:null,db:null,peerIds:new Map(),lastSent:''};
 const clean=(v,n)=>String(v==null?'':v).replace(/[\u0000-\u001f]/g,'').slice(0,n);
-try{NET.bc=new BroadcastChannel('night-island-v1');NET.bc.onmessage=e=>{if(!NET.room&&!wsOpen())onNet(e.data)}}catch(e){}
-// self-hosted server mode (server.js): page served over http(s) by our own server
-function wsConnect(){if(!/^https?:$/.test(location.protocol)||window.claude||NET.room)return;let ws;try{ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws')}catch(e){return}
- ws.onopen=()=>{NET.ws=ws;NET.lastSent='';if(inWorld&&me)bcPost({t:'hello'})};
- ws.onmessage=e=>{let d;try{d=JSON.parse(e.data)}catch(_){return}if(!d||typeof d!=='object')return;
-  if(d.k==='st'&&d.st)onState({...d.st,from:d.st.id});else if(d.k==='g'&&d.m)onNet(d.m);
-  else if(d.k==='wall'&&Array.isArray(d.list)){wall=d.list.map(q=>({n:clean(q.n,20),t:clean(q.t,100),z:ZONES[q.z]?q.z:'hub',time:+q.time||0}));if(wallWin)renderWall()}
-  else if(d.k==='full')toast(`⚠ 伺服器已滿（${d.max|0} 人），遲啲再試`,null,null,8000)};
- ws.onerror=()=>{};
- ws.onclose=()=>{const was=NET.ws===ws;NET.ws=null;if(was){for(const id of[...remotes.keys()])onNet({t:'leave',from:id});toast('⚠ 同伺服器斷咗線，重新連線中…')}setTimeout(wsConnect,3000)}}
-setTimeout(wsConnect,0);
-const wsOpen=()=>NET.ws&&NET.ws.readyState===1;
-function bcPost(m){if(!me)return;m.from=me.id;if(NET.room){NET.room.emit('g',m).catch(()=>{});return}if(wsOpen()){NET.ws.send(JSON.stringify({k:'g',m}));return}if(NET.bc){try{NET.bc.postMessage(m)}catch(e){}}}
-function myState(){return{t:'st',id:me.id,name:me.name,thought:me.thought,gender:me.gender,animal:me.animal,x:Math.round(me.x*2)/2,y:Math.round(me.y*2)/2,dir:me.dir,moving:!!me.moving,pod:me.podium||0,medal:me.medal||'',slip:me.stun>0?1:0,racing:me.racing?1:0,q:me.q||0,hb:Math.floor(Date.now()/2000)}}
-function onState(m){const id=clean(m.from||m.id,40);if(!id||!me||id===me.id)return;const x=+m.x,y=+m.y;if(!isFinite(x)||!isFinite(y))return;
- let r=remotes.get(id);if(!r){r={id,kind:'remote',alpha:0,anim:0,x,y};remotes.set(id,r)}
- if(Math.hypot(r.x-x,r.y-y)>140){r.x=x;r.y=y}
- Object.assign(r,{name:clean(m.name,20)||'旅人',thought:clean(m.thought,40),gender:m.gender==='f'?'f':'m',animal:AKEYS.includes(m.animal)?m.animal:'bear',tx:x,ty:y,dir:m.dir<0?-1:1,moving:!!m.moving,podium:[1,2,3].includes(m.pod)?m.pod:0,medal:['🥇','🥈','🥉'].includes(m.medal)?m.medal:'',slipping:!!m.slip,racing:!!m.racing,q:+m.q||0,seen:performance.now()});
- const c=chats.get(r.id);if(c)updateChatHead(c)}
-function onNet(m){if(!inWorld||!me||!m||typeof m!=='object')return;const from=clean(m.from,40);if(!from||from===me.id)return;if(m.to&&m.to!==me.id)return;
- const r=remotes.get(from);
- switch(m.t){
-  case'hello':bcPost(myState());break;
-  case'st':onState(m);break;
-  case'leave':if(r){remotes.delete(from);const c=chats.get(from);if(c)endChat(c,'— 佢已經離開咗島 —')}break;
-  case'req':if(!r||chats.has(r.id))return;if(openCount()>=cap()){bcPost({t:'busy',to:from});return}{const c=openChat(r,{incoming:true});if(c)notifyIncoming(c)}break;
-  case'busy':{const c=chats.get(from);if(c){removeChat(c);toast(`⚠ ${esc(r?r.name:'對方')} 已經同緊人傾偈，傾唔到`)}}break;
-  case'msg':{if(!r)return;let c=chats.get(r.id);if(!c){if(openCount()>=cap())return;c=openChat(r,{incoming:true});if(!c)return;notifyIncoming(c)}addMsg(c,'them',clean(m.text,200));break}
-  case'close':{const c=chats.get(from);if(c)endChat(c,'— 對方已離開對話 —')}break;
-  case'wall':wall=store.get('ni_wall',wall);if(wallWin)renderWall();break;
-  case'wallpost':if(!NET.db&&m.post){const q=m.post;wall.unshift({n:clean(q.n,20),t:clean(q.t,100),z:ZONES[q.z]?q.z:'hub',time:Date.now()});wall=wall.slice(0,80);if(wallWin)renderWall()}break;
-  case'rstart':onRaceStart(m);break;
-  case'rban':{const s=race.st;if(s&&s.online&&s.bananas[m.i|0])s.bananas[m.i|0].gone=true}break;
-  case'rfin':{const s=race.st;if(!s||!s.online)break;const rr=s.racers.find(x=>x.e.id===from);if(rr&&!rr.done){rr.done=true;s.finish.push(rr);rr.rank=s.finish.length;if(rr.rank===1)s.firstT=s.time;toast(`🏁 ${esc(rr.e.name)} 衝出迷宮！第 ${rr.rank} 名`)}}break;
-  case'rend':{const s=race.st;if(s&&s.online&&s.phase==='run'&&Array.isArray(m.order))startCeremony(m.order.slice(0,4).map(x=>clean(x,40)))}break;
- }}
-function syncPeers(){if(!NET.room)return;for(const p of NET.room.peers()){if(p.sameTab)continue;const st=p.presence&&p.presence.st;if(st&&typeof st==='object'&&st.id){NET.peerIds.set(p.peer,String(st.id));onState({...st,from:st.id})}}}
-function netLabel(){const real=1+remotes.size;return(NET.room||wsOpen())?`🌐 線上 · 真人 ${real}`:(remotes.size?`💻 本機多分頁 · ${real}`:'💻 單機')}
-(async()=>{try{if(!window.claude||typeof claude.use!=='function')return;const room=await claude.use('room');if(!room)return;NET.room=room;
- room.on('g',msg=>{if(msg.sameTab)return;const d=msg.data;if(d&&typeof d==='object')onNet(d)},()=>{});
- room.onPeers(ch=>{for(const p of[...ch.joined,...ch.updated]){if(p.sameTab)continue;const st=p.presence&&p.presence.st;
-   if(st&&typeof st==='object'&&st.id){NET.peerIds.set(p.peer,String(st.id));onState({...st,from:st.id})}
-   else if(NET.peerIds.has(p.peer)){const id=NET.peerIds.get(p.peer);NET.peerIds.delete(p.peer);onNet({t:'leave',from:id})}}
-  for(const p of ch.left){const id=NET.peerIds.get(p.peer);if(id){NET.peerIds.delete(p.peer);onNet({t:'leave',from:id})}}},()=>{});
- if(inWorld)syncPeers();
- const db=await claude.use('db');if(db){NET.db=db;try{db.collection('wall').orderBy('time','desc').limit(80).onSnapshot(snap=>{wall=snap.docs.map(d=>d.data()).filter(Boolean).map(d=>({n:clean(d.n,20),t:clean(d.t,100),z:ZONES[d.z]?d.z:'hub',time:+d.time||0}));if(wallWin)renderWall()},()=>{NET.db=null})}catch(e){NET.db=null}}
-}catch(e){}})();
-setInterval(()=>{if(!inWorld||!me)return;const st=myState();if(NET.room||wsOpen()){const k=JSON.stringify(st);if(k!==NET.lastSent){NET.lastSent=k;if(NET.room)NET.room.presence({st}).catch(()=>{});else NET.ws.send(JSON.stringify({k:'st',st}))}}else bcPost(st)},110);
-addEventListener('beforeunload',()=>{if(inWorld)bcPost({t:'leave'})});
+function myState(){return{id:me.id,name:me.name,thought:me.thought,gender:me.gender,animal:me.animal,x:Math.round(me.x*2)/2,y:Math.round(me.y*2)/2,dir:me.dir,moving:!!me.moving,pod:me.podium||0,medal:me.medal||'',slip:me.stun>0?1:0,racing:me.racing?1:0,q:me.q||0}}
+function broadcastState(){
+  if(!me || !inWorld) return;
+  if(window.CloudNet) window.CloudNet.updateState(myState());
+}
+setInterval(broadcastState, 200);
 
-/* ================= toasts ================= */
+window.onState = function(m) {
+  const id=clean(m.from||m.id,40);if(!id||!me||id===me.id)return;
+  const x=+m.x,y=+m.y;if(!isFinite(x)||!isFinite(y))return;
+  let r=remotes.get(id);if(!r){r={id,kind:'remote',alpha:0,anim:0,x,y};remotes.set(id,r)}
+  if(Math.hypot(r.x-x,r.y-y)>140){r.x=x;r.y=y}
+  Object.assign(r,{name:clean(m.name,20)||'旅人',thought:clean(m.thought,40),gender:m.gender==='f'?'f':'m',animal:AKEYS.includes(m.animal)?m.animal:'bear',tx:x,ty:y,dir:m.dir<0?-1:1,moving:!!m.moving,podium:[1,2,3].includes(m.pod)?m.pod:0,medal:['🥇','🥈','🥉'].includes(m.medal)?m.medal:'',slipping:!!m.slip,racing:!!m.racing,q:+m.q||0,seen:performance.now()});
+  const c=chats.get(r.id);if(c)updateChatHead(c);
+};
+
+window.onNet = function(m) {
+  if(!inWorld||!me||!m||typeof m!=='object')return;
+  const from=clean(m.from,40);if(!from||from===me.id)return;
+  const r=remotes.get(from);
+  switch(m.t){
+    case'leave':if(r){remotes.delete(from);const c=chats.get(from);if(c)endChat(c,'— 佢已經離開咗島 —')}break;
+    case'req':if(!r||chats.has(r.id))return;if(openCount()>=cap())return;const c=openChat(r,{incoming:true});if(c)notifyIncoming(c);break;
+    case'msg':{if(!r)return;let c=chats.get(r.id);if(!c){if(openCount()>=cap())return;c=openChat(r,{incoming:true});if(!c)return;notifyIncoming(c)}addMsg(c,'them',clean(m.text,200));break}
+    case'close':{const c=chats.get(from);if(c)endChat(c,'— 對方已離開對話 —')}break;
+    case'rstart':onRaceStart(m);break;
+  }
+};
+
+/* ================= ui windows ================= */
 function toast(html,btn,fn,ms=3800){const t=el('div','toast',html);if(btn){const b=el('button','btn pink',btn);b.style.padding='1px 8px';b.onclick=()=>{fn();t.remove()};t.appendChild(b)}$('#toasts').appendChild(t);setTimeout(()=>t.remove(),ms);return t}
-
-/* ================= windows ================= */
 function makeWin(cls,title,w){const win=el('div','win '+cls);win.innerHTML=`<div class="tbar"><span class="ti">${title}</span><button class="tbtn mn">_</button><button class="tbtn cl">✕</button></div>`;document.body.appendChild(win);
  const n=document.querySelectorAll('.win:not(.hidden)').length;const W=Math.min(w||320,innerWidth-16);win.style.left=Math.max(8,Math.min(innerWidth-W-8,innerWidth/2-W/2+(n%5)*26-40))+'px';win.style.top=Math.max(8,Math.min(innerHeight-480,60+(n%5)*22))+'px';
  drag(win,$('.tbar',win));win.addEventListener('pointerdown',()=>front(win));front(win);return win}
@@ -688,18 +736,16 @@ function drag(win,bar){let sx,sy,ox,oy,on=false;bar.addEventListener('pointerdow
 function confirmBox(text,okLabel,fn){const w=makeWin('modal','⚠ 確認',300);w.style.width='300px';w.classList.add('modal');w.style.zIndex=999;const b=el('div','body',`<div style="margin-bottom:12px">${text}</div>`);const row=el('div','',null);row.style.cssText='display:flex;gap:8px;justify-content:flex-end';const c=el('button','btn','取消'),o=el('button','btn pink',okLabel);c.onclick=()=>w.remove();o.onclick=()=>{w.remove();fn()};row.append(c,o);b.appendChild(row);w.appendChild(b);$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove()}
 function promptBox(title,label,val,max,fn){const w=makeWin('modal',title,300);w.style.width='300px';w.style.zIndex=999;const b=el('div','body',`<label class="f">${label}</label>`);const i=el('input','t');i.maxLength=max;i.value=val;const row=el('div','');row.style.cssText='display:flex;gap:8px;justify-content:flex-end;margin-top:10px';const c=el('button','btn','取消'),o=el('button','btn pri','確定');c.onclick=()=>w.remove();const go=()=>{const v=i.value.trim();if(!v)return;w.remove();fn(v)};o.onclick=go;i.onkeydown=e=>{if(e.key==='Enter')go()};row.append(c,o);b.append(i,row);w.appendChild(b);$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove();setTimeout(()=>i.focus(),30)}
 
-/* ================= chat ================= */
+/* ================= chat system ================= */
 const cap=()=>2+(extra?1:0);
 function openCount(){let n=0;for(const c of chats.values())if(!c.ended)n++;return n}
 function openChat(ent,o={}){
  if(chats.has(ent.id)){showChat(chats.get(ent.id));return chats.get(ent.id)}
  if(openCount()>=cap()){toast(`⚠ 最多同時同 ${cap()} 個人傾偈，請先閂咗一個`);return null}
- if(ent.kind==='bot'&&ent.busy&&!o.incoming){toast(`⚠ ${esc(ent.name)} 已經同緊兩個人傾偈`);return null}
- if(openCount()===2&&extra)extraInUse=true;
- const win=makeWin('chatwin',`${ANIMALS[ent.animal].n}・${esc(ent.name)}`,320);
+ const win=makeWin('chatwin',`${ANIMALS[ent.animal]?ANIMALS[ent.animal].n:'旅人'}・${esc(ent.name)}`,320);
  win.insertAdjacentHTML('beforeend',`<div class="heads"><div class="hd me"></div><div class="hd them"></div></div><div class="msgs"><div class="sys">— ${esc(ent.name)} · ${ZONES[zoneAt(ent.x,ent.y)].icon} ${ZONES[zoneAt(ent.x,ent.y)].name} —</div></div><div class="bar"><button class="hb" title="送心心">❤️</button><input maxlength="200" placeholder="講啲嘢… Enter 發送"><button class="btn pri" style="padding:2px 10px">發送</button></div>`);
  const c={ent,win,msgs:$('.msgs',win),input:$('input',win),unread:0,min:false,ended:false,botSent:0};
- const tab=el('div','tab');tab.innerHTML=`<span>${ANIMALS[ent.animal].n}</span><span class="nm">${esc(ent.name)}</span><span class="bd hidden"></span><span class="x">✕</span>`;$('#tabs').appendChild(tab);c.tab=tab;
+ const tab=el('div','tab');tab.innerHTML=`<span>${ANIMALS[ent.animal]?ANIMALS[ent.animal].n:'旅人'}</span><span class="nm">${esc(ent.name)}</span><span class="bd hidden"></span><span class="x">✕</span>`;$('#tabs').appendChild(tab);c.tab=tab;
  tab.onclick=e=>{if(e.target.classList.contains('x')){closeChat(c);return}if(c.min||activeChat!==c)showChat(c);else minChat(c)};
  $('.mn',win).onclick=()=>minChat(c);$('.cl',win).onclick=()=>closeChat(c);
  const send=()=>{const v=c.input.value.trim();if(!v||c.ended)return;c.input.value='';sendMsg(c,v)};
@@ -707,31 +753,31 @@ function openChat(ent,o={}){
  $('.bar .btn',win).onclick=send;$('.hb',win).onclick=()=>{if(!c.ended)sendMsg(c,'❤️')};
  win.addEventListener('pointerdown',()=>{activeChat=c;markTabs()});
  chats.set(ent.id,c);updateChatHead(c);
- if(ent.kind==='remote'&&!o.incoming)bcPost({t:'req',to:ent.id});
+ if(ent.kind==='remote'&&!o.incoming){
+   if(window.CloudNet) window.CloudNet.sendMessage({ t:'req', from:me.id, to:ent.id });
+ }
  if(o.incoming){c.min=true;win.classList.add('hidden')}else{activeChat=c;setTimeout(()=>c.input.focus(),30)}
  markTabs();updateTint();blip(660,.06);return c}
+
 function updateChatHead(c){const e=c.ent;const mh=$('.hd.me',c.win),th=$('.hd.them',c.win);
  mh.innerHTML='';mh.appendChild(avatarCanvas(me.animal));mh.insertAdjacentHTML('beforeend',`<div><small>我</small><p>${esc(me.thought)}</p></div>`);
  th.innerHTML='';th.appendChild(avatarCanvas(e.animal));th.insertAdjacentHTML('beforeend',`<div><small>${e.gender==='f'?'佢 ♀':'佢 ♂'} ${c.ended?'<i class="off">● 離線</i>':'<i class="on">● 在線</i>'}</small><p>${esc(e.thought)}</p></div>`)}
-function addMsg(c,who,text,o={}){
+function addMsg(c,who,text){
  const row=el('div','mrow'+(who==='me'?' mine':''));row.appendChild(avatarCanvas(who==='me'?me.animal:c.ent.animal));
  const col=el('div','');col.style.cssText='display:flex;flex-direction:column;align-items:'+(who==='me'?'flex-end':'flex-start')+';max-width:80%';
  col.innerHTML=`<div class="mname">${esc(who==='me'?me.name:c.ent.name)} · ${hhmm(new Date())}</div><div class="bub${/^❤️$/.test(text)?' heart':''}">${esc(text)}</div>`;row.appendChild(col);
  c.msgs.appendChild(row);c.msgs.scrollTop=c.msgs.scrollHeight;
  if(who!=='me'){if(c.min||activeChat!==c){c.unread++;markTabs()}blip(990,.06,'triangle',.05)}}
-function sendMsg(c,text){addMsg(c,'me',text);if(c.ent.kind==='remote')bcPost({t:'msg',to:c.ent.id,text});else botRespond(c,text)}
+function sendMsg(c,text){addMsg(c,'me',text);if(c.ent.kind==='remote'){if(window.CloudNet) window.CloudNet.sendMessage({ t:'msg', from:me.id, to:c.ent.id, text });}else botRespond(c,text)}
 function showChat(c){c.min=false;c.win.classList.remove('hidden');front(c.win);activeChat=c;c.unread=0;markTabs();updateTint();setTimeout(()=>c.input.focus(),20)}
 function minChat(c){c.min=true;c.win.classList.add('hidden');if(activeChat===c)activeChat=[...chats.values()].find(x=>!x.min)||null;c.input.blur();markTabs();updateTint()}
 function markTabs(){for(const c of chats.values()){c.tab.classList.toggle('act',c===activeChat&&!c.min);c.tab.classList.toggle('ended',c.ended);const bd=$('.bd',c.tab);bd.textContent=c.unread;bd.classList.toggle('hidden',!c.unread)}}
 function updateTint(){$('#tint').classList.toggle('on',[...chats.values()].some(c=>!c.min))}
-function closeChat(c){if(c.ended){removeChat(c);return}confirmBox('你確定要離開呢個對話？<br>離開之後就永遠退出呢個聊天室，訊息都會消失。','離開對話',()=>{if(c.ent.kind==='remote')bcPost({t:'close',to:c.ent.id});removeChat(c)})}
-function removeChat(c){c.win.remove();c.tab.remove();chats.delete(c.ent.id);if(activeChat===c)activeChat=null;clearTimeout(c.timer);markTabs();updateTint();
- if(extraInUse&&openCount()<=2){extra=0;extraInUse=false;toast('已用咗額外對話，上限返回 2 個')}}
-function endChat(c,msg){if(c.ended)return;c.ended=true;c.msgs.appendChild(el('div','sys',esc(msg)));c.msgs.scrollTop=1e9;c.input.disabled=true;c.input.placeholder='對話已結束';updateChatHead(c);markTabs();
- if(extraInUse&&openCount()<=2){extra=0;extraInUse=false;toast('已用咗額外對話，上限返回 2 個')}}
+function closeChat(c){if(c.ended){removeChat(c);return}confirmBox('你確定要離開呢個對話？<br>離開之後就永遠退出呢個聊天室，訊息都會消失。','離開對話',()=>{if(c.ent.kind==='remote'&&window.CloudNet)window.CloudNet.sendMessage({t:'close',from:me.id,to:c.ent.id});removeChat(c)})}
+function removeChat(c){c.win.remove();c.tab.remove();chats.delete(c.ent.id);if(activeChat===c)activeChat=null;clearTimeout(c.timer);markTabs();updateTint()}
+function endChat(c,msg){if(c.ended)return;c.ended=true;c.msgs.appendChild(el('div','sys',esc(msg)));c.msgs.scrollTop=1e9;c.input.disabled=true;c.input.placeholder='對話已結束';updateChatHead(c);markTabs()}
 function notifyIncoming(c){toast(`💬 <b>${esc(c.ent.name)}</b> 向你發送訊息！`,'查看',()=>showChat(c),7000);blip(880,.08);setTimeout(()=>blip(1175,.1),100)}
 
-/* bot brain */
 function botLine(c,text){const t=text.toLowerCase();
  if(/❤|心心|love/.test(text))return pick(BRAIN.heart);
  if(/跑|run|race|比賽|賽跑|迷宮|maze/.test(t)){c.ent.wantsRace=true;return pick(BRAIN.run)}
@@ -745,21 +791,16 @@ function botRespond(c,text){if(c.ended)return;clearTimeout(c.timer);
   setTimeout(()=>{ty.remove();if(c.ended||!chats.has(c.ent.id))return;const line=botLine(c,text);addMsg(c,'them',line);c.botSent++;
    if(c.ent.wantsRace){c.ent.wantsRace=false;botJoinQueue(c.ent)}
    if(c.leaving||c.botSent>=c.ent.byeAt){if(!c.leaving)setTimeout(()=>addMsg(c,'them',pick(BRAIN.bye)),1500);setTimeout(()=>endChat(c,'— 對方已離開對話 —'),3500);return}
-   if(Math.random()<.35)setTimeout(()=>{if(!c.ended&&chats.has(c.ent.id)){addMsg(c,'them',pick(BRAIN.ask).replace('{z}',ZONES[pick(['bkk','pus','tyo','han'])].name));c.botSent++}},rand(2500,5000));
   },rand(900,2600));
  },rand(500,1500))}
 
-/* ================= bot events ================= */
 let botTimers=[];
 function scheduleBotEvents(){botTimers.forEach(clearTimeout);botTimers=[];
- const incoming=()=>{botTimers.push(setTimeout(()=>{if(inWorld&&!race.st&&openCount()<cap()){const cand=bots.filter(b=>!chats.has(b.id)&&!b.busy&&b.alpha>=1);if(cand.length){const b=pick(cand);const c=openChat(b,{incoming:true});if(c){addMsg(c,'them',pick(BRAIN.open));c.botSent=1;notifyIncoming(c)}}}incoming()},rand(45000,95000)))};
- const churn=()=>{botTimers.push(setTimeout(()=>{if(inWorld){const free=bots.filter(b=>!chats.has(b.id)&&!race.queue.includes(b)&&!b.racing&&!b.podium&&!b.cheer&&!b.watch);if(free.length&&Math.random()<.5&&bots.length>12){const b=pick(free);b.leaving=true}if(bots.length<20&&Math.random()<.6){const b=newBot();b.alpha=0}}churn()},rand(30000,60000)))};
  const mail=()=>{botTimers.push(setTimeout(()=>{if(inWorld)receiveLetter(pick(NAMES),pick(LETTERS));mail()},rand(90000,200000)))};
- incoming();churn();mail();
- botTimers.push(setTimeout(()=>{if(inWorld)receiveLetter(pick(NAMES),pick(LETTERS))},rand(25000,45000)));
+ mail();
 }
 
-/* ================= letters ================= */
+/* ================= letters & wall ================= */
 let letWin=null,letTab='in';
 function receiveLetter(from,text,isReply){letters.unshift({id:Date.now()+''+ri(0,999),from,text,time:Date.now(),read:false,reply:!!isReply});letters=letters.slice(0,40);store.set('ni_letters',letters);toast('💌 你收到一封信',isReply?'睇回信':'查看',()=>openLetters('in'),7000);blip(1046,.12,'triangle',.05);if(letWin&&letTab==='in')renderLetters()}
 function openLetters(tab='in'){letTab=tab;if(letWin){letWin.classList.remove('hidden');front(letWin);renderLetters();return}
@@ -774,25 +815,24 @@ function renderLetters(replyTo){const sc=$('.scroll',letWin);letWin.querySelecto
 function renderLetter(l){const sc=$('.scroll',letWin);sc.innerHTML=`<div class="body"><div class="meta" style="font-size:11px;opacity:.6">寄件人：${esc(l.from)} · ${new Date(l.time).toLocaleString()}</div><div class="post" style="margin:10px 0;font-size:14px;white-space:pre-wrap">${esc(l.text)}</div><div style="display:flex;gap:8px"><button class="btn" id="lBack">← 返回</button><button class="btn pink" id="lRep">↩ 回信</button></div></div>`;
  $('#lBack',sc).onclick=()=>{letTab='in';renderLetters()};$('#lRep',sc).onclick=()=>{letTab='new';renderLetters(l.from)}}
 
-/* ================= wall ================= */
 let wallWin=null;
 function openWall(){if(wallWin){wallWin.classList.remove('hidden');front(wallWin);return}
  wallWin=makeWin('lwin','📌 留言牆',360);wallWin.insertAdjacentHTML('beforeend','<div class="scroll" style="background:#f3e7d7"></div><div class="body" style="border-top:2px solid var(--line)"><textarea class="t" maxlength="100" placeholder="喺牆上留言…100字以內" style="height:54px"></textarea><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><span class="cnt">0/100</span><button class="btn pink">貼上牆 📌</button></div></div>');
  const ta=$('textarea',wallWin);ta.oninput=()=>$('.cnt',wallWin).textContent=ta.value.length+'/100';
- $('.btn.pink',wallWin).onclick=()=>{const v=ta.value.trim();if(!v)return;const post={n:me.name,t:v,z:zoneAt(me.x,me.y),time:Date.now()};ta.value='';if(wsOpen()){NET.ws.send(JSON.stringify({k:'wallpost',post}));toast('📌 已貼上留言牆（全部玩家睇到）');return}if(NET.db){NET.db.collection('wall').doc().set(post).then(()=>toast('📌 已貼上留言牆（全部玩家睇到）')).catch(()=>toast('⚠ 貼唔到，遲啲再試'));return}wall=store.get('ni_wall',wall);wall.unshift(post);wall=wall.slice(0,80);store.set('ni_wall',wall);toast('📌 已貼上留言牆');bcPost(NET.room?{t:'wallpost',post}:{t:'wall'});renderWall()};
+ $('.btn.pink',wallWin).onclick=()=>{const v=ta.value.trim();if(!v)return;const post={n:me.name,t:v,z:zoneAt(me.x,me.y),time:Date.now()};ta.value='';if(window.CloudNet){window.CloudNet.postWall(post);toast('📌 已同步貼上雲端留言牆');}renderWall()};
  $('.cl',wallWin).onclick=()=>{wallWin.remove();wallWin=null};$('.mn',wallWin).onclick=()=>wallWin.classList.add('hidden');renderWall()}
-function renderWall(){const sc=$('.scroll',wallWin);sc.innerHTML='';if(!wall.length){sc.innerHTML='<div class="sys" style="padding:30px">牆上未有留言 ~</div>';return}wall.forEach(p=>sc.appendChild(el('div','post',`${esc(p.t)}<div class="meta">— ${esc(p.n)} · ${ZONES[p.z]?ZONES[p.z].icon+' '+ZONES[p.z].name:''} · ${hhmm(new Date(p.time))}</div>`)))}
+window.renderWall = function(){if(!wallWin) return;const sc=$('.scroll',wallWin);sc.innerHTML='';if(!wall.length){sc.innerHTML='<div class="sys" style="padding:30px">牆上未有留言 ~</div>';return}wall.forEach(p=>sc.appendChild(el('div','post',`${esc(p.t)}<div class="meta">— ${esc(p.n)} · ${ZONES[p.z]?ZONES[p.z].icon+' '+ZONES[p.z].name:''} · ${hhmm(new Date(p.time))}</div>`)))};
 
-/* ================= race (hedge maze with banana traps) ================= */
+/* ================= race system ================= */
 const PODSPOT=[null,{x:PODIUM.x,y:PODIUM.y-26},{x:PODIUM.x-24,y:PODIUM.y-18},{x:PODIUM.x+24,y:PODIUM.y-12}];
-const PRAISE=[['🥇','冠軍','迷宮之王！一條路都冇行錯','快到香蕉都追唔上你','今晚嘅主角就係你'],['🥈','亞軍','差少少就贏，好勁！','方向感一流，掌聲送畀你','下次冠軍就係你'],['🥉','季軍','堅持到最後，好有型！','上到台就係英雄','衝出迷宮嗰下好帥']];
+const PRAISE=[['🥇','冠軍','迷宮之王！一條路都冇行錯'],['🥈','亞軍','差少少就贏，好勁！'],['🥉','季軍','堅持到最後，好有型！']];
 const POI_RACE=POI.find(p=>p.type==='race');
 const GOAL=[MAZE.ex,MAZE.y0-1],START=[MAZE.ex,MAZE.y0+MAZE.H-2];
 const TRAM={x:30*T,y:40.9*T,dir:1,wait:60},TRAM_SPR=S.tram();
 const PODS={t:0},POD_SPR=['#e04f4f','#f2c230','#3f74d0','#2f8f5b','#d9488f'].map(c=>mk(14,13,(x,r)=>{r(1,0,12,13,'#3b2333');r(0,1,14,11,'#3b2333');r(2,1,10,11,c);r(1,2,12,9,c);r(3,3,8,4,'#bfe3ff');r(3,3,8,1,'#e9f6ff');r(6,0,2,1,'#3b2333');r(2,9,10,1,shade(c,-.2))}));
 function drawPods(p){for(let i=0;i<5;i++){const off=(i*64+PODS.t*.35)%(p.w-14);ctx.drawImage(POD_SPR[i],Math.round(p.x+off),p.y+8-12)}}
 const TRAIN={x:84*T,y:37*T+13,active:false,wait:900},TRAIN_SPR=S.trainV();
-function updateTrain(dt){PODS.t+=dt;if(!TRAIN.active){TRAIN.wait-=dt;if(TRAIN.wait<=0){TRAIN.active=true;TRAIN.x=84*T;if(inWorld&&me&&me.x>52*T&&me.y>30*T&&me.y<44*T){blip(330,.35,'sawtooth',.04);setTimeout(()=>blip(262,.45,'sawtooth',.04),380);toast('🚂 火車嚟喇！啤酒街啲人快啲縮埋')}}return}
+function updateTrain(dt){PODS.t+=dt;if(!TRAIN.active){TRAIN.wait-=dt;if(TRAIN.wait<=0){TRAIN.active=true;TRAIN.x=84*T}return}
  TRAIN.x-=1.15*dt;if(TRAIN.x+152<54*T){TRAIN.active=false;TRAIN.wait=rand(1800,3200)}
  if(inWorld&&me&&!me.racing&&Math.floor(me.y/T)===37&&me.x>TRAIN.x-8&&me.x<TRAIN.x+160){me.y=38.8*T;me.vy=1.2;toast('😱 小心火車！')}}
 function drawTrain(){ctx.drawImage(TRAIN_SPR,Math.round(TRAIN.x),TRAIN.y-26)}
@@ -802,244 +842,168 @@ function bfsFrom(gx,gy){const d=new Map([[gx+','+gy,0]]),q=[[gx,gy]];while(q.len
 function pathTo(sx,sy,gx,gy){const d=bfsFrom(gx,gy);if(!d.has(sx+','+sy))return[];const path=[];let x=sx,y=sy,k=d.get(x+','+y);while(k>0){for(const[dx,dy]of[[1,0],[-1,0],[0,1],[0,-1]]){const kk=d.get((x+dx)+','+(y+dy));if(kk===k-1){x+=dx;y+=dy;k=kk;path.push([x,y]);break}}}return path}
 function inQueue(e){return race.queue.includes(e)}
 function randomSpotNear(x,y){for(let i=0;i<60;i++){const a=x+rand(-30,30),b=y+rand(-10,10);if(walkable(a,b)&&!inMaze(a,b))return{x:a,y:b}}return{x,y}}
-function remoteQueued(){for(const r of remotes.values())if(r.q>0&&!r.racing)return true;return false}
-function onlineQueue(){const l=[];if(me&&me.q)l.push({e:me,q:me.q});for(const r of remotes.values())if(r.q>0&&!r.racing)l.push({e:r,q:r.q});return l.sort((a,b)=>a.q-b.q||(a.e.id<b.e.id?-1:1))}
-function hostStart(){const oq=onlineQueue().slice(0,4);if(race.st||oq.length<2||oq[0].e!==me)return;const seed=(Math.random()*1e9)|0,ids=oq.map(o=>o.e.id);bcPost({t:'rstart',seed,ids,host:me.id});onRaceStart({seed,ids,host:me.id,from:me.id})}
-function onRaceStart(m){const ids=Array.isArray(m.ids)?m.ids.slice(0,4).map(x=>clean(x,40)):[];const seed=(+m.seed)|0;if(race.st)return;
- if(!ids.includes(me.id)){makeMaze(seed);repaint(MAZE.x0-1,MAZE.y0-1,MAZE.x0+MAZE.W,MAZE.y0+MAZE.H);renderMM();if(inMaze(me.x,me.y)){const p=randomSpotNear(SPAWN.x,SPAWN.y);me.x=p.x;me.y=p.y}toast('🌀 朋友開咗場迷宮賽跑，喺入口睇吓！');return}
- const ents=ids.map(id=>id===me.id?me:remotes.get(id)).filter(Boolean);if(ents.length<2)return;startRace(ents,{seed,online:true,host:clean(m.host,40)})}
-setInterval(()=>{if(!inWorld||!me||!me.q||race.st)return;if(remoteQueued()){updateQueue();const oq=onlineQueue();const newest=Math.max(...oq.map(o=>o.q));if(oq[0].e===me&&(oq.length>=4||(oq.length>=2&&Date.now()-newest>30000)))hostStart()}},1000);
-function joinQueue(){if(race.st){toast('比賽進行緊，完咗先再排');return}if(inQueue(me))return;if(race.queue.length>=4){toast('⚠ 呢場已經滿 4 人，等下一場');return}
- race.queue.push(me);me.q=Date.now();race.qSince=Date.now();updateQueue();toast('🌀 已排隊迷宮賽跑！最多 4 人','去入口',()=>{const p=randomSpotNear(POI_RACE.x,POI_RACE.y+8);me.x=p.x;me.y=p.y});botFill();checkQueue()}
+
+function joinQueue(){if(race.st){toast('比賽進行緊，完咗先再排');return}if(inQueue(me))return;
+ race.queue.push(me);me.q=Date.now();updateQueue();toast('🌀 已排隊迷宮賽跑！');botFill();checkQueue()}
 function leaveQueue(){race.queue=race.queue.filter(e=>e!==me);if(me)me.q=0;updateQueue()}
-function botJoinQueueSilent(b){race.queue.push(b);const p=randomSpotNear(POI_RACE.x+rand(-30,30),POI_RACE.y+8);b.tx=p.x;b.ty=p.y;b.wait=0}
-function botJoinQueue(b){if(race.st||inQueue(b)||race.queue.length>=4)return;botJoinQueueSilent(b);race.qSince=Date.now();updateQueue();checkQueue()}
-let fillTimer=null;
-function botFill(){clearTimeout(fillTimer);if(!inQueue(me)||race.st)return;fillTimer=setTimeout(()=>{if(!inQueue(me)||race.st)return;
- if(remoteQueued()){botFill();return}
- if(race.queue.length<4&&Math.random()<.75){const cand=bots.filter(b=>!inQueue(b)&&!chats.has(b.id)&&b.alpha>=1&&!b.leaving);if(cand.length)botJoinQueue(pick(cand))}
- if(race.st)return;if(!remoteQueued()&&race.queue.length>=2&&Date.now()-race.qSince>30000){startRace(race.queue.slice(0,4));return}botFill()},rand(3000,7000))}
+function botJoinQueue(b){if(race.st||inQueue(b))return;race.queue.push(b);updateQueue();checkQueue()}
+function botFill(){if(!inQueue(me)||race.st)return;
+ setTimeout(()=>{if(!inQueue(me)||race.st)return;
+  if(race.queue.length<4){const cand=bots.filter(b=>!inQueue(b));if(cand.length)botJoinQueue(pick(cand))}
+ },2000)}
 function updateQueue(){const q=$('#queue');if(!me||!inQueue(me)||race.st){q.classList.add('hidden');return}q.classList.remove('hidden');
- if(remoteQueued()){const oq=onlineQueue(),host=oq[0]&&oq[0].e===me;q.innerHTML=`<span>🌐 真人排隊 <b>${oq.length}/4</b>：${oq.map(o=>esc(o.e.name)).join('、')}${host?' · 你係主持（夠 4 人自動開始）':' · 等主持開始'}</span>${host&&oq.length>=2?'<button class="btn pink go" style="padding:1px 8px">立即開始</button>':''}<button class="btn lv" style="padding:1px 8px">離開隊伍</button>`;$('.lv',q).onclick=leaveQueue;const g=$('.go',q);if(g)g.onclick=hostStart;return}
- const n=race.queue.length;
- q.innerHTML=`<span>🌀 你排第 <b>${race.queue.indexOf(me)+1}</b> · 等緊：<b>${n}/4</b>${n>=2?' · 30 秒冇人加入就自動開始':''}</span>${n>=2?'<button class="btn pink go" style="padding:1px 8px">立即開始</button>':''}<button class="btn lv" style="padding:1px 8px">離開隊伍</button>`;
+ const n=race.queue.length;q.innerHTML=`<span>🌀 排隊中：<b>${n}/4</b></span>${n>=2?'<button class="btn pink go" style="padding:1px 8px">立即開始</button>':''}<button class="btn lv" style="padding:1px 8px">離開隊伍</button>`;
  $('.lv',q).onclick=leaveQueue;const g=$('.go',q);if(g)g.onclick=()=>startRace(race.queue.slice(0,4))}
-function checkQueue(){if(remoteQueued())return;if(race.queue.length>=4&&inQueue(me)&&!race.st){const r=race.queue.slice(0,4);$('#queue').classList.add('hidden');setTimeout(()=>startRace(r),900)}}
-function big(t,ms=850){const b=$('#bigText');b.textContent=t;b.classList.remove('hidden');b.style.animation='none';void b.offsetWidth;b.style.animation='';clearTimeout(b._t);b._t=setTimeout(()=>b.classList.add('hidden'),ms)}
-function fanfare(){[523,659,784,1046,784,1046].forEach((f,i)=>setTimeout(()=>blip(f,.2,'triangle',.06),i*170))}
-function gatherSpectators(x,y,n,cheer){const racing=new Set(race.st?race.st.racers.map(r=>r.e):[]);
- const cand=bots.filter(b=>!racing.has(b)&&!chats.has(b.id)&&b.alpha>=1&&!b.leaving).sort((a,b)=>Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y)).slice(0,n);
- cand.forEach((b,i)=>{if(Math.hypot(b.x-x,b.y-y)>260){const p=randomSpot('hub');b.x=p.x;b.y=p.y}const sp=randomSpotNear(x+(i-n/2)*18,y+rand(0,8));b.tx=sp.x;b.ty=sp.y;b.wait=0;b.cheer=cheer;b.watch=!cheer})}
-function startRace(ents,o={}){if(race.st||!ents||ents.length<2)return;const seed=o.seed!=null?o.seed:(Math.random()*1e9)|0;me.q=0;race.queue=race.queue.filter(e=>e!==me);
- race.queue=race.queue.filter(e=>!ents.includes(e));updateQueue();clearTimeout(fillTimer);
- for(const c of chats.values())if(!c.min)minChat(c);held.clear();me.clickT=null;
- // brand-new maze every race
+function checkQueue(){if(race.queue.length>=4&&inQueue(me)&&!race.st){startRace(race.queue.slice(0,4))}}
+
+function big(t,ms=850){const b=$('#bigText');b.textContent=t;b.classList.remove('hidden');clearTimeout(b._t);b._t=setTimeout(()=>b.classList.add('hidden'),ms)}
+function startRace(ents){if(race.st||!ents||ents.length<2)return;const seed=(Math.random()*1e9)|0;me.q=0;race.queue=[];updateQueue();
  makeMaze(seed);repaint(MAZE.x0-1,MAZE.y0-1,MAZE.x0+MAZE.W,MAZE.y0+MAZE.H);renderMM();
- for(const b of bots)if(!ents.includes(b)&&inMaze(b.x,b.y)){const p=randomSpot('hub');b.x=p.x;b.y=p.y;b.tx=p.x;b.ty=p.y}
- if(!ents.includes(me)&&inMaze(me.x,me.y)){const p=randomSpotNear(SPAWN.x,SPAWN.y);me.x=p.x;me.y=p.y}
  const dist=bfsFrom(GOAL[0],GOAL[1]);
- const floor=[...dist.entries()].filter(([k,d])=>d>4&&d<dist.get(START.join(','))-2).map(([k])=>k.split(',').map(Number));
- const BR=mulberry32(seed^0x5bd1e995);const bananas=[];for(let i=0;i<11&&floor.length;i++){const t=floor.splice(Math.floor(BR()*floor.length),1)[0];bananas.push({x:t[0]*T+8,y:t[1]*T+11,gone:false})}
- race.st={phase:'count',t:3,time:0,hudT:0,firstT:0,finish:[],bananas,dist,online:!!o.online,host:o.host||null,
-  racers:ents.map((e,i)=>{const det=[];const nd=ri(0,2);for(let k=0;k<nd;k++){const f=[...dist.keys()];det.push(f[Math.floor(Math.random()*f.length)].split(',').map(Number))}
-   return{e,me:e===me,remote:e.kind==='remote',top:rand(1.15,1.45),legs:[...det,GOAL],path:[],done:false}})};
- race.st.racers.forEach((r,i)=>{if(r.remote)return;r.e.x=START[0]*T+8+(i-1.5)*3.5;r.e.y=START[1]*T+11;r.e.dir=1;r.e.moving=false;r.e.racing=true;r.e.podium=0;r.e.stun=0;r.e.slow=0});
- $('#raceHud').classList.remove('hidden');renderRaceHud();big('3');blip(523,.1);
- gatherSpectators(POI_RACE.x,POI_RACE.y+6,5,false)}
+ race.st={phase:'count',t:3,time:0,finish:[],dist,
+  racers:ents.map((e,i)=>{
+   return{e,me:e===me,remote:e.kind==='remote',top:rand(1.15,1.45),legs:[GOAL],path:[],done:false}})};
+ race.st.racers.forEach((r,i)=>{if(r.remote)return;r.e.x=START[0]*T+8+(i-1.5)*3.5;r.e.y=START[1]*T+11;r.e.racing=true});
+ $('#raceHud').classList.remove('hidden');renderRaceHud();big('3');
+ if(window.CloudNet) window.CloudNet.sendMessage({ t:'rstart', seed, ids:ents.map(x=>x.id) });
+}
+function onRaceStart(m){
+ if(race.st) return;
+ const ids=m.ids||[];const ents=ids.map(id=>id===me.id?me:remotes.get(id)).filter(Boolean);if(ents.length<2)return;
+ makeMaze(m.seed);repaint(MAZE.x0-1,MAZE.y0-1,MAZE.x0+MAZE.W,MAZE.y0+MAZE.H);renderMM();
+ const dist=bfsFrom(GOAL[0],GOAL[1]);
+ race.st={phase:'count',t:3,time:0,finish:[],dist,racers:ents.map(e=>({e,me:e===me,remote:e.kind==='remote',top:1.3,legs:[GOAL],path:[],done:false}))};
+ $('#raceHud').classList.remove('hidden');renderRaceHud();big('3');
+}
 function botStep(r,dt){const e=r.e;
- if(!r.path.length){if(!r.legs.length)r.legs=[GOAL];const w=r.legs.shift();const c=tileOf(e);r.path=pathTo(c[0],c[1],w[0],w[1]);if(!r.path.length){e.moving=false;return}}
- const[tx,ty]=r.path[0];const gx=tx*T+8,gy=ty*T+11,dx=gx-e.x,dy=gy-e.y,d=Math.hypot(dx,dy),sp=r.top*(e.slow>0?.45:1)*dt;
+ if(!r.path.length){const c=tileOf(e);r.path=pathTo(c[0],c[1],GOAL[0],GOAL[1]);if(!r.path.length){e.moving=false;return}}
+ const[tx,ty]=r.path[0];const gx=tx*T+8,gy=ty*T+11,dx=gx-e.x,dy=gy-e.y,d=Math.hypot(dx,dy),sp=r.top*dt;
  if(d<=sp){e.x=gx;e.y=gy;r.path.shift()}else{e.x+=dx/d*sp;e.y+=dy/d*sp}
- if(Math.abs(dx)>.3)e.dir=dx<0?-1:1;e.moving=true;e.anim+=dt}
+ e.moving=true;e.anim+=dt}
 function stepsLeft(r){if(r.done)return 0;const[x,y]=tileOf(r.e);const d=race.st.dist.get(x+','+y);return d==null?999:d}
 function standings(){return race.st.racers.slice().sort((a,b)=>(a.done&&b.done)?a.rank-b.rank:a.done?-1:b.done?1:stepsLeft(a)-stepsLeft(b))}
-function renderRaceHud(){const s=race.st,mr=s.racers.find(r=>r.me),st=standings();
- $('#raceHud').innerHTML=`<div>🌀 <b>夜語島盃 · 迷宮賽跑</b>${mr?` · 你：名次 <b>${st.indexOf(mr)+1}</b>/${s.racers.length}${mr.done?' 🏁':` · 離終點約 <b>${stepsLeft(mr)}</b> 步`}`:''}</div><ol>${st.map((r,i)=>`<li class="${r.me?'me':''}">${i+1}. ${esc(r.e.name)} ${r.done?'🏁':`<small>${stepsLeft(r)}步</small>`}</li>`).join('')}</ol><div class="rh-hint">方向鍵行迷宮 · 由上面 🏁 出口衝出去 · 🍌 係陷阱，踩中會跣低兼減速 · 前 3 名上台領獎</div>`}
-function burst(x,y,n){for(let i=0;i<n;i++)race.confetti.push({x:x+rand(-40,40),y:y+rand(-30,0),vx:rand(-.8,.8),vy:rand(-2.2,-.5),c:pick(['#e0457b','#ffd23f','#3f74d0','#2f8f5b','#fff','#ee8a3a']),life:rand(90,170)})}
-function updateConfetti(dt){for(const p of race.confetti){p.vy+=.04*dt;p.vx*=.99;p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt}race.confetti=race.confetti.filter(p=>p.life>0)}
-function updateTram(dt){if(TRAM.wait>0){TRAM.wait-=dt;if(TRAM.wait<=0&&inWorld&&me&&Math.hypot(me.x-TRAM.x,me.y-TRAM.y)<260){blip(1568,.12,'sine',.05);setTimeout(()=>blip(1568,.12,'sine',.05),180)}return}
- TRAM.x+=TRAM.dir*.7*dt;const L=27.2*T,Rr=57*T-66;if(TRAM.x>Rr){TRAM.x=Rr;TRAM.dir=-1;TRAM.wait=300}if(TRAM.x<L){TRAM.x=L;TRAM.dir=1;TRAM.wait=300}}
-function drawTram(){ctx.save();if(TRAM.dir<0){ctx.translate(Math.round(TRAM.x)+66,TRAM.y-30);ctx.scale(-1,1);ctx.drawImage(TRAM_SPR,0,0)}else ctx.drawImage(TRAM_SPR,Math.round(TRAM.x),TRAM.y-30);ctx.restore()}
-function drawBananas(){const s=race.st;if(!s)return;
- if(s.phase!=='ceremony'){const X=MAZE.ex*T,Y=(MAZE.y0+MAZE.H-1)*T;ctx.fillStyle='#3b2a33';ctx.fillRect(X,Y+3,T,9);ctx.fillStyle='#c48a4f';for(let i=0;i<4;i++)ctx.fillRect(X+1+i*4,Y+4,2,7);ctx.fillRect(X,Y+6,T,2)}
- if(s.phase==='ceremony')return;for(const b of s.bananas){if(b.gone)continue;const x=b.x,y=b.y-3;ctx.fillStyle='#3b2a33';ctx.fillRect(x-5,y-3,11,6);ctx.fillStyle='#f6d33c';ctx.fillRect(x-4,y-2,9,4);ctx.fillStyle='#fff7b0';ctx.fillRect(x-3,y-2,5,1);ctx.fillStyle='#8a5a34';ctx.fillRect(x+4,y-2,1,2)}}
-const MZC={x:(MAZE.x0+MAZE.W/2)*T,y:(MAZE.y0+MAZE.H/2)*T};
-function curZoom(){if(!race.st)return Z;const w=race.st.phase==='ceremony'?MAZE.W+16:MAZE.W+4;const fit=Math.min(innerWidth/(w*T),(innerHeight-90)/((MAZE.H+5)*T));return Math.max(1.25,Math.min(Z,fit))}
-function camFocus(){if(!race.st)return me;if(race.st.phase==='ceremony')return{x:(MZC.x+PODIUM.x)/2+20,y:MZC.y};return{x:MZC.x,y:MZC.y-8}}
-function updateRace(dt){updateConfetti(dt);const s=race.st;if(!s)return;
- if(s.phase==='count'){const b=Math.ceil(s.t);s.t-=dt/60;const a=Math.ceil(s.t);if(a!==b){if(a>0){big(String(a));blip(523,.1)}else{big('開始！',900);blip(1046,.25);s.phase='run'}}return}
+function renderRaceHud(){const s=race.st,st=standings();
+ $('#raceHud').innerHTML=`<div>🌀 <b>夜語島盃 · 迷宮賽跑</b></div><ol>${st.map((r,i)=>`<li class="${r.me?'me':''}">${i+1}. ${esc(r.e.name)} ${r.done?'🏁':`<small>${stepsLeft(r)}步</small>`}</li>`).join('')}</ol>`}
+function updateRace(dt){const s=race.st;if(!s)return;
+ if(s.phase==='count'){s.t-=dt/60;if(s.t<=0){big('開始！');s.phase='run'}return}
  if(s.phase==='run'){s.time+=dt/60;
-  for(const r of s.racers){const e=r.e;if(r.remote){if(!r.done&&!remotes.has(e.id))r.gone=true;continue}if(e.stun>0)e.stun-=dt;if(e.slow>0)e.slow-=dt;e.slipping=e.stun>0;
-   if(r.done){if(!r.me){e.moving=false}continue}
-   if(!r.me&&e.stun<=0)botStep(r,dt);else if(!r.me)e.moving=false;
-   for(let bi=0;bi<s.bananas.length;bi++){const b=s.bananas[bi];if(b.gone)continue;if(Math.abs(e.x-b.x)<7&&Math.abs(e.y-b.y)<7){b.gone=true;e.stun=50;e.slow=170;if(s.online&&r.me)bcPost({t:'rban',i:bi});
-    if(r.me){toast('🍌 踩中香蕉陷阱！跣低兼減速…');blip(150,.3,'sawtooth',.05)}else{if(Math.hypot(me.x-e.x,me.y-e.y)<160)blip(260,.1,'square',.03)}}}
-   if(e.y<MAZE.y0*T-1){if(s.online&&r.me)bcPost({t:'rfin'});r.done=true;s.finish.push(r);r.rank=s.finish.length;e.moving=false;if(r.rank===1)s.firstT=s.time;blip(r.me?1318:330,.25);
-    if(r.me){big(`第 ${r.rank} 名！`,1400);held.clear()}else if(r.rank===1)toast(`🏁 ${esc(e.name)} 第一個走出迷宮！`);
-    if(!r.me){const p=randomSpotNear(MAZE.ex*T+8+(r.rank-2)*14,(MAZE.y0-1.3)*T);e.x=p.x;e.y=p.y}}
+  for(const r of s.racers){const e=r.e;if(r.remote)continue;
+   if(r.done)continue;
+   if(!r.me)botStep(r,dt);
+   if(e.y<MAZE.y0*T-1){r.done=true;s.finish.push(r);r.rank=s.finish.length;if(r.me)big(`第 ${r.rank} 名！`)}
   }
-  s.hudT-=dt;if(s.hudT<=0){s.hudT=8;renderRaceHud()}
-  const allDone=s.racers.every(r=>r.done||r.gone);
-  if(s.online){if(s.host===me.id){if(allDone||(s.firstT&&s.time-s.firstT>25)||s.time>150){const order=standings().map(r=>r.e.id);bcPost({t:'rend',order});startCeremony(order)}}else if(s.time>175||(s.host&&!remotes.has(s.host)&&(allDone||s.time>60)))startCeremony()}
-  else if(allDone||(s.firstT&&s.time-s.firstT>25)||s.time>150)startCeremony();return}
- if(s.phase==='ceremony'){s.t-=dt/60;if(Math.random()<.05*dt)burst(PODIUM.x+rand(-30,30),PODIUM.y-50,18);if(s.t<=0)endCeremony()}}
-function startCeremony(order){const s=race.st;let st=standings();if(order){const o=order.map(id=>s.racers.find(r=>r.e.id===id)).filter(Boolean);st=o.concat(st.filter(r=>!o.includes(r)))}s.phase='ceremony';s.t=12;$('#raceHud').classList.add('hidden');held.clear();
- for(const r of s.racers){if(r.remote)continue;Object.assign(r.e,{racing:false,slipping:false,moving:false,stun:0,slow:0,podium:0})}
- const top=st.slice(0,3);
- top.forEach((r,i)=>{if(r.remote){r.e.medal=PRAISE[i][0];return}const sp=PODSPOT[i+1];r.e.x=sp.x;r.e.y=sp.y;r.e.dir=1;r.e.podium=i+1;r.e.medal=PRAISE[i][0]});
- st.slice(3).forEach(r=>{if(r.remote)return;const p=randomSpotNear(PODIUM.x-44,PODIUM.y+10);r.e.x=p.x;r.e.y=p.y});
- gatherSpectators(PODIUM.x-6,PODIUM.y+24,8,true);
- $('#ceremony').innerHTML=`<div class="cer-t">🏆 頒獎典禮 · 夜語島盃迷宮賽</div>`+top.map((r,i)=>`<div class="cer-row r${i+1}"><span class="md">${PRAISE[i][0]}</span><b>${esc(r.e.name)}</b>${r.me?' <span style="color:#d9488f">（你）</span>':''}<span class="pr">${PRAISE[i][1]} · ${pick(PRAISE[i].slice(2))}</span></div>`).join('')+(st[3]?`<div class="cer-row"><span class="md">🎽</span>${esc(st[3].e.name)}${st[3].me?'（你）':''}<span class="pr">第 4 名 · 行完迷宮都係贏家</span></div>`:'');
- $('#ceremony').classList.remove('hidden');fanfare();burst(PODIUM.x,PODIUM.y-40,90);big('🏆',1200);
- const mine=st.findIndex(r=>r.me);
- if(mine===0){extra=1;toast('🎉 冠軍！可以額外多開一個對話（一次）',null,null,7000)}
- else if(mine>0&&mine<3)toast(`${PRAISE[mine][0]} 你攞到${PRAISE[mine][1]}！個名旁邊會掛住獎牌`,null,null,6000);
- else if(mine>=3)toast('🎽 第 4 名，下次再嚟！')}
-function endCeremony(){const s=race.st;for(const r of s.racers){if(r.remote)continue;r.e.podium=0;r.e.racing=false;const p=randomSpotNear(PODIUM.x+rand(-30,10),PODIUM.y+22);r.e.x=p.x;r.e.y=p.y;if(r.e.kind==='bot')r.e.wait=rand(60,200)}
- bots.forEach(b=>{if(b.cheer||b.watch){b.cheer=b.watch=false;b.wait=rand(30,150)}});
- $('#ceremony').classList.add('hidden');race.st=null;held.clear();
- if(!race.queue.length){const c=bots.filter(b=>b.alpha>=1&&!chats.has(b.id));if(c.length)botJoinQueueSilent(pick(c))}
- toast('想再玩？撳 🌀 迷宮賽跑 再排隊（每場都係新迷宮）')}
-function abortRace(){if(race.st){race.st.racers.forEach(r=>Object.assign(r.e,{racing:false,podium:0,slipping:false,stun:0,slow:0}))}race.st=null;bots.forEach(b=>{b.cheer=b.watch=false});['#raceHud','#ceremony','#bigText'].forEach(x=>$(x).classList.add('hidden'));race.queue=race.queue.filter(e=>e!==me);updateQueue()}
+  renderRaceHud();
+  if(s.racers.every(r=>r.done||r.remote))startCeremony();return}
+ if(s.phase==='ceremony'){s.t-=dt/60;if(s.t<=0)endCeremony()}}
+function startCeremony(){const s=race.st;s.phase='ceremony';s.t=8;$('#raceHud').classList.add('hidden');
+ const top=standings().slice(0,3);
+ $('#ceremony').innerHTML=`<div class="cer-t">🏆 頒獎典禮</div>`+top.map((r,i)=>`<div class="cer-row r${i+1}"><span class="md">${PRAISE[i][0]}</span><b>${esc(r.e.name)}</b></div>`).join('');
+ $('#ceremony').classList.remove('hidden')}
+function endCeremony(){$('#ceremony').classList.add('hidden');race.st=null}
 
-/* ================= input ================= */
+/* ================= input & controls ================= */
 const ARROWS={ArrowUp:1,ArrowDown:1,ArrowLeft:1,ArrowRight:1};
 const isTyping=t=>t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT');
 addEventListener('keydown',e=>{if(!inWorld)return;const k=e.key;
- if(race.st&&race.st.phase!=='run'){if(ARROWS[k]||k===' ')e.preventDefault();return}
  if(ARROWS[k]){held.add(k);e.preventDefault();return}
  const typing=isTyping(e.target);
- if(k==='Escape'){if(typing)e.target.blur();$('#startMenu').classList.add('hidden');return}
- if(!typing){if(k==='Enter'){if(nearTarget){doNearAction();e.preventDefault()}else if(activeChat&&!activeChat.min)activeChat.input.focus();return}
-  if(k.length===1&&!e.ctrlKey&&!e.metaKey&&activeChat&&!activeChat.min&&!activeChat.ended)activeChat.input.focus()}});
+ if(!typing&&k==='Enter'&&nearTarget){doNearAction();e.preventDefault()}});
 addEventListener('keyup',e=>held.delete(e.key));
 addEventListener('blur',()=>held.clear());
 $('#dpad').querySelectorAll('button').forEach(b=>{const k=b.dataset.k;b.addEventListener('pointerdown',e=>{e.preventDefault();if(k==='Enter'){if(nearTarget)doNearAction();return}held.add(k)});['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>held.delete(k)))});
-// click on canvas: walk toward / show person card
+
 $('#game').addEventListener('pointerdown',e=>{if(!inWorld)return;const wx=e.clientX/Zcur+camX,wy=e.clientY/Zcur+camY;let best=null,bd=16;for(const p of allPeople()){if(p===me)continue;const d=Math.hypot(p.x-wx,p.y-12-wy);if(d<bd){bd=d;best=p}}if(best){const dist=Math.hypot(best.x-me.x,best.y-me.y);if(dist<48){openChat(best)}else toast(`${esc(best.name)} 「${esc(best.thought)}」<br><small>行近啲先可以連接</small>`)}else{me.clickT={x:wx,y:wy}}});
 
-/* start menu */
-$('#startBtn').onclick=e=>{e.stopPropagation();const m=$('#startMenu');m.classList.toggle('hidden');m.querySelector('[data-a=sound]').textContent='🔊 聲音：'+(soundOn?'開':'關')};
+$('#startBtn').onclick=e=>{e.stopPropagation();$('#startMenu').classList.toggle('hidden')};
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('#startMenu')&&e.target.id!=='startBtn')$('#startMenu').classList.add('hidden')});
 $('#startMenu').addEventListener('click',e=>{const a=e.target.dataset.a;if(!a)return;$('#startMenu').classList.add('hidden');
- if(a==='thought')promptBox('💭 改想法','此刻諗緊…',me.thought,40,v=>{me.thought=v;const p=store.get('ni_profile',{});p.thought=v;store.set('ni_profile',p);for(const c of chats.values())updateChatHead(c);toast('🔄 已更新想法！再去探索吧 ✦')});
+ if(a==='thought')promptBox('💭 改想法','此刻諗緊…',me.thought,40,v=>{me.thought=v;broadcastState();toast('🔄 已更新想法！')});
  if(a==='letters')openLetters('in');if(a==='wall')openWall();if(a==='race')joinQueue();
  if(a==='sound'){soundOn=!soundOn;store.set('ni_sound',soundOn);toast(soundOn?'🔊 已開聲':'🔈 已靜音')}
  if(a==='tp')teleportMenu();
- if(a==='online'){const w=makeWin('modal','🌐 同朋友線上玩',340);w.style.zIndex=999;$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove();w.appendChild(el('div','body',(NET.room||wsOpen())?`<p style="margin:0 0 8px">✅ 你而家喺<b>線上模式</b>。開同一條連結嘅朋友會即時見到你、可以傾偈同埋一齊玩迷宮賽跑。</p><p style="margin:0 0 8px;font-size:12px">${NET.room?'邀請朋友：喺 claude.ai 呢頁 <b>Share</b> → 輸入朋友 email，權限揀可以互動／編輯（佢哋需要 claude.ai 帳戶）。':'邀請朋友：直接將呢頁嘅網址傳俾佢哋就得，唔使任何帳戶。'}</p><p style="margin:0;font-size:12px;opacity:.7">名旁有 🤖 嘅係電腦島民；冇 🤖 嘅係真人。最多 4 人一齊賽跑。</p>`:`<p style="margin:0 0 8px">而家係<b>本機模式</b>：只可以同同一部電腦嘅其他分頁一齊玩。</p><p style="margin:0;font-size:12px">要同朋友線上玩：①用 claude.ai 發佈咗嘅版本再 Share 俾朋友（要 claude.ai 帳戶）；或者②用 night-island-online 資料夾嘅 server.js 自己架設（免費，朋友唔使帳戶）。</p>`))}
- if(a==='leave')confirmBox('離開島嶼？所有對話都會結束。','離開',leaveWorld)});
-function teleportMenu(){const w=makeWin('modal','🧭 傳送',260);w.style.width='260px';w.style.zIndex=999;$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove();const b=el('div','body');['hub','bkk','pus','tyo','han'].forEach(z=>{const bt=el('button','btn',`${ZONES[z].icon} ${ZONES[z].name} ${ZONES[z].en}`);bt.style.cssText='display:block;width:100%;margin:4px 0;text-align:left';bt.onclick=()=>{const p=z==='hub'?randomSpotNear(SPAWN.x,SPAWN.y):randomSpot(z);me.x=p.x;me.y=p.y;w.remove();blip(784,.15,'sine',.06)};b.appendChild(bt)});w.appendChild(b)}
-(function drawIcons(){const D='#3b2333';document.querySelectorAll('canvas.pxi').forEach(cv=>{const x=cv.getContext('2d');const r=(a,b,w,h,c)=>{x.fillStyle=c;x.fillRect(a,b,w,h)};const k=cv.dataset.i;
- if(k==='letter'){r(2,6,20,14,D);r(3,7,18,12,'#ffe3ee');r(3,7,18,2,'#fff4f8');for(let i=0;i<9;i++){r(3+i,8+i*.6,2,1,'#e9a8c0');r(19-i,8+i*.6,2,1,'#e9a8c0')}r(3,17,18,2,'#f6c9db');r(9,10,6,5,D);r(10,10,2,2,'#e0457b');r(12,10,2,2,'#e0457b');r(10,12,4,2,'#e0457b');r(11,14,2,1,'#e0457b');r(10,10,1,1,'#ff9cc0');r(19,2,1,3,'#fff');r(18,3,3,1,'#fff');r(3,3,1,1,'#ffd23f')}
- if(k==='wall'){r(1,3,22,18,D);r(2,4,20,16,'#9a6a3c');r(3,5,18,14,'#c8915a');for(let i=0;i<12;i++)r(4+(i*7)%16,6+(i*5)%12,1,1,'#b07a46');r(4,6,6,5,'#fff6a8');r(12,6,7,4,'#ffd0e1');r(5,12,7,5,'#cdeee3');r(14,12,5,5,'#cfe0ff');[[6,6,'#e0457b'],[15,6,'#3f74d0'],[8,12,'#2f8f5b'],[16,12,'#ee8a3a']].forEach(([a,b,c])=>{r(a,b,2,2,c);r(a,b,1,1,'#fff')});r(5,8,4,1,'#d6c36a');r(13,8,5,1,'#e9a8c0');r(3,21,2,2,D);r(19,21,2,2,D)}
- if(k==='maze'){r(1,1,22,22,D);r(2,2,20,20,'#e4d8bd');const H='#3f9a4a',H2='#2f7a3a';[[2,2,20,2],[2,20,9,2],[13,20,9,2],[2,2,2,20],[20,2,2,20],[6,6,10,2],[6,6,2,8],[10,10,8,2],[14,14,2,6],[6,16,6,2]].forEach(([a,b,w,h])=>{r(a,b,w,h,H);r(a,b+h-1,w,1,H2)});r(11,1,2,2,'#e4d8bd');r(16,3,1,6,D);r(17,3,4,3,'#e0457b');r(9,17,3,3,'#f6d33c');r(9,17,3,1,'#fff7b0')}
- if(k==='globe'){for(let y=0;y<24;y++)for(let i=0;i<24;i++){const dx=i-11.5,dy=y-11.5,d=dx*dx+dy*dy;if(d<=110)r(i,y,1,1,D);if(d<=90)r(i,y,1,1,'#5ab4e5')}[[7,6,5,4],[6,10,4,5],[13,8,5,3],[14,11,4,6],[9,16,3,2]].forEach(([a,b,w,h])=>r(a,b,w,h,'#7ccf6a'));r(7,5,3,1,'#bfe6ff');r(6,6,1,2,'#bfe6ff');r(16,13,2,2,'#e0457b');r(8,8,2,2,'#ffd23f')}
- })})();
-$('#icTp').onclick=()=>teleportMenu();
-$('#icLetters').onclick=()=>openLetters('in');$('#icWall').onclick=openWall;$('#icRace').onclick=joinQueue;
-function leaveWorld(){for(const c of [...chats.values()]){if(c.ent.kind==='remote')bcPost({t:'close',to:c.ent.id});removeChat(c)}bcPost({t:'leave'});if(NET.room)NET.room.presence({st:null}).catch(()=>{});NET.lastSent='';remotes.clear();leaveQueue();abortRace();inWorld=false;
- ['#hud','#icons','#minimap','#nearby','#taskbar','#hint','#queue','#dpad'].forEach(s=>$(s).classList.add('hidden'));document.querySelectorAll('.win').forEach(w=>{if(!w.closest('#login'))w.remove()});letWin=wallWin=null;$('#login').classList.remove('hidden');botTimers.forEach(clearTimeout)}
+ if(a==='online'){const w=makeWin('modal','🌐 雲端線上連線',340);w.style.zIndex=999;$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove();w.appendChild(el('div','body',`<p>✅ 你目前透過 <b>Google Cloud (Firebase)</b> 即時雲端連線中！</p><p style="font-size:12px">只需複製此網頁網址傳給朋友，大家即可在同一島嶼上即時移動、發送留言與賽跑。</p>`))}
+ if(a==='leave')confirmBox('離開島嶼？','離開',leaveWorld)});
 
-/* ================= nearby ================= */
+function teleportMenu(){const w=makeWin('modal','🧭 傳送',260);w.style.width='260px';w.style.zIndex=999;$('.mn',w).remove();$('.cl',w).onclick=()=>w.remove();const b=el('div','body');['hub','bkk','pus','tyo','han'].forEach(z=>{const bt=el('button','btn',`${ZONES[z].icon} ${ZONES[z].name}`);bt.style.cssText='display:block;width:100%;margin:4px 0;text-align:left';bt.onclick=()=>{const p=z==='hub'?randomSpotNear(SPAWN.x,SPAWN.y):randomSpot(z);me.x=p.x;me.y=p.y;w.remove()};b.appendChild(bt)});w.appendChild(b)}
+
+(function drawIcons(){const D='#3b2333';document.querySelectorAll('canvas.pxi').forEach(cv=>{const x=cv.getContext('2d');const r=(a,b,w,h,c)=>{x.fillStyle=c;x.fillRect(a,b,w,h)};const k=cv.dataset.i;
+ if(k==='letter'){r(2,6,20,14,D);r(3,7,18,12,'#ffe3ee')}
+ if(k==='wall'){r(1,3,22,18,D);r(2,4,20,16,'#9a6a3c')}
+ if(k==='maze'){r(1,1,22,22,D);r(2,2,20,20,'#e4d8bd')}
+ if(k==='globe'){r(2,2,20,20,'#5ab4e5')}
+ })})();
+$('#icTp').onclick=()=>teleportMenu();$('#icLetters').onclick=()=>openLetters('in');$('#icWall').onclick=openWall;$('#icRace').onclick=joinQueue;
+
+function leaveWorld(){
+ if(window.CloudNet) window.CloudNet.leave();
+ remotes.clear();inWorld=false;
+ ['#hud','#icons','#minimap','#nearby','#taskbar','#hint','#queue','#dpad'].forEach(s=>$(s).classList.add('hidden'));document.querySelectorAll('.win').forEach(w=>{if(!w.closest('#login'))w.remove()});$('#login').classList.remove('hidden')}
+
+/* ================= loop update & render ================= */
 let nearTarget=null;
 function updateNearby(){const nb=$('#nbBody');let best=null,bd=46;
  for(const p of allPeople()){if(p===me||p.alpha<1)continue;const d=Math.hypot(p.x-me.x,p.y-me.y);if(d<bd){bd=d;best=p}}
  let poi=null;if(!best)for(const q of POI){if(Math.hypot(q.x-me.x,q.y-me.y)<40){poi=q;break}}
- const key=best?('p'+best.id+chats.has(best.id)+openCount()+cap()):poi?('q'+poi.type+inQueue(me)):'none';
- nearTarget=best?{p:best}:poi?{q:poi}:null;if(nb.dataset.k===key)return;nb.dataset.k=key;
- if(best){const has=chats.has(best.id);const full=!has&&openCount()>=cap();
-  nb.innerHTML=`<span><b>${esc(best.name)}</b> 就喺附近</span>`+(full?'<span style="color:#c0392b">已達對話上限（'+cap()+'）</span>':`<button class="btn pink" style="padding:1px 10px">${has?'打開對話':'連接'}</button>`);
-  if(!full&&!has&&openCount()===2&&extra)nb.insertAdjacentHTML('beforeend','<small style="opacity:.7">（會用你嘅額外對話）</small>');
-  const b=$('button',nb);if(b)b.onclick=doNearAction}
- else if(poi){nb.innerHTML=`<span>${poi.label}</span><button class="btn pri" style="padding:1px 10px">${poi.type==='race'?(inQueue(me)?'排緊隊':'排隊比賽'):'打開'}</button>`;$('button',nb).onclick=doNearAction}
+ nearTarget=best?{p:best}:poi?{q:poi}:null;
+ if(best){const has=chats.has(best.id);nb.innerHTML=`<span><b>${esc(best.name)}</b> 就喺附近</span><button class="btn pink" style="padding:1px 10px">${has?'打開對話':'連接'}</button>`;$('button',nb).onclick=doNearAction}
+ else if(poi){nb.innerHTML=`<span>${poi.label}</span><button class="btn pri" style="padding:1px 10px">開啟</button>`;$('button',nb).onclick=doNearAction}
  else nb.innerHTML='<span style="opacity:.7">再行近啲…</span>'}
 function doNearAction(){if(!nearTarget)return;if(nearTarget.p)openChat(nearTarget.p);else{const t=nearTarget.q.type;if(t==='mail')openLetters('in');else if(t==='wall')openWall();else if(t==='race')joinQueue()}}
 
-/* ================= update ================= */
-function moveEnt(e,dx,dy,assist){let moved=false;
- if(dx){if(walkable(e.x+dx,e.y)){e.x+=dx;moved=true}else if(assist&&!dy){const cy=Math.floor(e.y/T)*T+11;for(const off of[cy-e.y,cy-e.y-T,cy-e.y+T]){if(Math.abs(off)<7&&walkable(e.x+dx,e.y+off)){e.y+=Math.sign(off)*Math.min(Math.abs(dx),Math.abs(off));moved=true;break}}}}
- if(dy){if(walkable(e.x,e.y+dy)){e.y+=dy;moved=true}else if(assist&&!dx){const cx=Math.floor(e.x/T)*T+8;for(const off of[cx-e.x,cx-e.x-T,cx-e.x+T]){if(Math.abs(off)<7&&walkable(e.x+off,e.y+dy)){e.x+=Math.sign(off)*Math.min(Math.abs(dy),Math.abs(off));moved=true;break}}}}
+function moveEnt(e,dx,dy){let moved=false;
+ if(dx){if(walkable(e.x+dx,e.y)){e.x+=dx;moved=true}}
+ if(dy){if(walkable(e.x,e.y+dy)){e.y+=dy;moved=true}}
  return moved}
 function update(dt){
- // player
  let dx=0,dy=0;if(held.has('ArrowLeft'))dx--;if(held.has('ArrowRight'))dx++;if(held.has('ArrowUp'))dy--;if(held.has('ArrowDown'))dy++;
  if(me.clickT&&!dx&&!dy){const ddx=me.clickT.x-me.x,ddy=me.clickT.y-me.y,d=Math.hypot(ddx,ddy);if(d<3)me.clickT=null;else{dx=ddx/d;dy=ddy/d}}else if(dx||dy)me.clickT=null;
- if((race.st&&race.st.phase!=='run')||me.stun>0)dx=dy=0;
- {const top=1.75*(me.slow>0?.45:1);let tvx=0,tvy=0;if(dx||dy){const l=Math.hypot(dx,dy);tvx=dx/l*top;tvy=dy/l*top}
-  const k=Math.min(1,(dx||dy?.3:.4)*dt);me.vx=(me.vx||0)+(tvx-(me.vx||0))*k;me.vy=(me.vy||0)+(tvy-(me.vy||0))*k;if(Math.abs(me.vx)<.03)me.vx=0;if(Math.abs(me.vy)<.03)me.vy=0;
-  if(me.vx||me.vy){const ok=moveEnt(me,me.vx*dt,me.vy*dt,!me.clickT);if(!ok){me.clickT=null;if(!(dx||dy)){me.vx=me.vy=0}}if(Math.abs(me.vx)>.15)me.dir=me.vx<0?-1:1;const sp=Math.hypot(me.vx,me.vy);me.moving=ok&&sp>.3;me.anim+=dt*Math.min(1.3,sp/1.4)}else me.moving=false}
- // zone banner
- const z=zoneAt(me.x,me.y);if(z!==lastZone){lastZone=z;const Zn=ZONES[z];$('#zonePill').textContent=Zn.icon+' '+Zn.name;const bn=$('#zoneBanner');bn.innerHTML=`${Zn.icon} ${Zn.name} ${Zn.en}<small>${Zn.sub}</small>`;bn.classList.add('on');clearTimeout(bn._t);bn._t=setTimeout(()=>bn.classList.remove('on'),2600)}
- // bots
- for(let i=bots.length-1;i>=0;i--){const b=bots[i];
-  if(b.leaving){b.alpha-=.01*dt;if(b.alpha<=0){bots.splice(i,1);continue}}else if(b.alpha<1)b.alpha=Math.min(1,b.alpha+.01*dt);
-  if(b.racing||b.podium)continue;
-  if(b.wait>0){b.wait-=dt;b.moving=false;continue}
-  const ddx=b.tx-b.x,ddy=b.ty-b.y,d=Math.hypot(ddx,ddy);
-  if(d<2){b.moving=false;if(inQueue(b)||b.cheer||b.watch){b.wait=60;if(b.cheer)b.dir=1;continue}
-   b.wait=rand(80,420);const z=Math.random()<.85?b.home:pick(['hub','bkk','pus','tyo','han']);const p=randomSpot(z);b.tx=p.x;b.ty=p.y;continue}
-  const sp=(chats.has(b.id)?.35:.75)*dt;const ok=moveEnt(b,ddx/d*sp,ddy/d*sp);
-  if(!ok){b.stuck=(b.stuck||0)+1;if(b.stuck>20){b.stuck=0;const p=randomSpot(b.home);b.tx=p.x;b.ty=p.y}}else b.stuck=0;
-  b.dir=ddx<0?-1:1;b.moving=ok;b.anim+=dt}
- // remotes
- const now=performance.now();for(const[id,r]of remotes){if(now-r.seen>6000){remotes.delete(id);const c=chats.get(id);if(c)endChat(c,'— 佢已經離線 —');continue}r.alpha=Math.min(1,(r.alpha||0)+.05*dt);const k=Math.min(1,.25*dt);const ox=r.x;r.x+=(r.tx-r.x)*k;r.y+=(r.ty-r.y)*k;r.anim+=r.moving?dt:0}
- updateTram(dt);updateTrain(dt);
- updateRace(dt);
- updateNearby();
+ if(dx||dy){const l=Math.hypot(dx,dy);const speed=1.75*dt;const ok=moveEnt(me,dx/l*speed,dy/l*speed);me.moving=ok;if(dx)me.dir=dx<0?-1:1;me.anim+=dt}else me.moving=false;
+ 
+ const z=zoneAt(me.x,me.y);if(z!==lastZone){lastZone=z;const Zn=ZONES[z];$('#zonePill').textContent=Zn.icon+' '+Zn.name;const bn=$('#zoneBanner');bn.innerHTML=`${Zn.icon} ${Zn.name}<small>${Zn.sub}</small>`;bn.classList.add('on');clearTimeout(bn._t);bn._t=setTimeout(()=>bn.classList.remove('on'),2600)}
+ for(const b of bots){if(b.wait>0){b.wait-=dt;continue}const ddx=b.tx-b.x,ddy=b.ty-b.y,d=Math.hypot(ddx,ddy);if(d<2){const p=randomSpot(b.home);b.tx=p.x;b.ty=p.y;b.wait=rand(100,300);continue}moveEnt(b,ddx/d*.75*dt,ddy/d*.75*dt);b.anim+=dt;b.alpha=Math.min(1,b.alpha+.05)}
+ const now=performance.now();
+ for(const[id,r]of remotes){
+   if(now-r.seen>10000){remotes.delete(id);continue}
+   r.alpha=Math.min(1,(r.alpha||0)+.05*dt);
+   r.x+=(r.tx-r.x)*.2;r.y+=(r.ty-r.y)*.2;
+ }
+ updateTrain(dt);updateRace(dt);updateNearby();
 }
 
-/* ================= render ================= */
 const cv=$('#game'),ctx=cv.getContext('2d');const mm=$('#minimap'),mctx=mm.getContext('2d');
-function resize(){dpr=window.devicePixelRatio||1;cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;Z=innerWidth<720?2:3;if(innerWidth>1700)Z=4}
+function resize(){dpr=window.devicePixelRatio||1;cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;Z=innerWidth<720?2:3}
 addEventListener('resize',resize);resize();
 const MMBG=document.createElement('canvas');MMBG.width=MW*2;MMBG.height=MH*2;
 function renderMM(){const c=MMBG.getContext('2d');const col={0:'#5ab4e5',1:'#8fcf6a',2:'#e6bd8e',3:'#d99b6c',4:'#5cc0e8',5:'#a8743f',6:'#f3dfa8',7:'#cdc9c4',8:'#d98f62',9:'#8a93a0',10:'#8a7a6a',11:'#c8383b',12:'#5d646e',13:'#2c6e36',14:'#e4d8bd',15:'#e4d8bd'};for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){c.fillStyle=col[gt(x,y)];c.fillRect(x*2,y*2,2,2)}}
 renderMM();
-function bubble(x,y,text,o){ctx.font=`${o.size||12}px "PingFang HK","Microsoft JhengHei","Noto Sans TC",sans-serif`;let t=text.length>16?text.slice(0,15)+'…':text;const w=ctx.measureText(t).width+(o.g?24:16),h=(o.size||12)+10;const bx=Math.round(x-w/2),by=Math.round(y-h);
- ctx.fillStyle='rgba(59,42,51,.25)';ctx.fillRect(bx+2,by+2,w,h);ctx.fillStyle=o.bg||'#fff';ctx.fillRect(bx,by,w,h);ctx.strokeStyle=o.border||'#3b2a33';ctx.lineWidth=1.5;ctx.strokeRect(bx+.5,by+.5,w-1,h-1);
- ctx.fillStyle=o.col||'#3b2a33';ctx.fillText(t,bx+8,by+h-7);if(o.g){ctx.fillStyle=o.g==='f'?'#e0457b':'#3f74d0';ctx.fillText(o.g==='f'?'♀':'♂',bx+w-14,by+h-7)}
- if(o.tail){ctx.fillStyle=o.bg||'#fff';ctx.fillRect(x-2,by+h-1,4,3);ctx.fillStyle=o.border||'#3b2a33';ctx.fillRect(x-1,by+h+2,2,2)}}
+
+function bubble(x,y,text,o){ctx.font=`12px sans-serif`;let t=text.length>16?text.slice(0,15)+'…':text;const w=ctx.measureText(t).width+16,h=22;const bx=Math.round(x-w/2),by=Math.round(y-h);
+ ctx.fillStyle='rgba(59,42,51,.25)';ctx.fillRect(bx+2,by+2,w,h);ctx.fillStyle=o.bg||'#fff';ctx.fillRect(bx,by,w,h);ctx.strokeStyle='#3b2a33';ctx.lineWidth=1.5;ctx.strokeRect(bx+.5,by+.5,w-1,h-1);
+ ctx.fillStyle='#3b2a33';ctx.fillText(t,bx+8,by+h-7)}
+
 function draw(){
- const Z=curZoom();if(Math.abs(Z-Zcur)>.01){Zcur=Z;camSX=null}const F=camFocus();const vw=innerWidth/Z,vh=innerHeight/Z;const tX=Math.max(0,Math.min(WW-vw,F.x-vw/2)),tY=Math.max(0,Math.min(WH-vh+34/Z,F.y-vh/2));
- if(camSX==null||Math.hypot(tX-camSX,tY-camSY)>300){camSX=tX;camSY=tY}else{const k=Math.min(1,.16*lastDt);camSX+=(tX-camSX)*k;camSY+=(tY-camSY)*k}
- camX=Math.round(camSX*Z)/Z;camY=Math.round(camSY*Z)/Z;
+ const Z=Zcur;const vw=innerWidth/Z,vh=innerHeight/Z;
+ camX=Math.max(0,Math.min(WW-vw,me.x-vw/2));camY=Math.max(0,Math.min(WH-vh,me.y-vh/2));
  ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle='#5ab4e5';ctx.fillRect(0,0,cv.width,cv.height);
  const s=Z*dpr;ctx.setTransform(s,0,0,s,-camX*s,-camY*s);ctx.imageSmoothingEnabled=false;
- {const sx=Math.max(0,Math.floor(camX)),sy=Math.max(0,Math.floor(camY)),sw=Math.min(WW-sx,Math.ceil(vw)+2),sh=Math.min(WH-sy,Math.ceil(vh)+2);ctx.drawImage(BG,sx,sy,sw,sh,sx,sy,sw,sh)}
- drawBananas();
- // animated water shimmer
- const tt=performance.now()/1000;
- const vis=[];const x0=camX-60,x1=camX+vw+60,y0=camY-40,y1=camY+vh+160;
- for(const p of props)if(p.x+p.w>x0&&p.x<x1&&p.y+p.h>y0&&p.y<y1)vis.push({y:p.sy,p});
- const ppl=allPeople();for(const e of ppl)if(e.x>x0&&e.x<x1&&e.y>y0&&e.y<y1)vis.push({y:e.y+(e.podium?90:0),e});
- if(TRAM.x+66>x0&&TRAM.x<x1&&TRAM.y>y0&&TRAM.y-30<y1)vis.push({y:TRAM.y,tram:1});
- if(TRAIN.active&&TRAIN.x+152>x0&&TRAIN.x<x1&&TRAIN.y>y0&&TRAIN.y-26<y1)vis.push({y:TRAIN.y,train:1});
+ ctx.drawImage(BG,0,0);
+ const vis=[];
+ for(const p of props)vis.push({y:p.sy,p});
+ for(const e of allPeople())vis.push({y:e.y,e});
  vis.sort((a,b)=>a.y-b.y);
- for(const v of vis){if(v.tram){drawTram()}else if(v.p){ctx.drawImage(v.p.spr,v.p.x,v.p.y);if(v.p.after)v.p.after(v.p)}else if(v.train){drawTrain()}else{const e=v.e;ctx.globalAlpha=e.alpha??1;ctx.fillStyle='rgba(30,20,40,.2)';ctx.fillRect(e.x-7,e.y-1,14,2);ctx.fillRect(e.x-5,e.y-2,10,4);
-  const fr=e.moving?[1,0,3,0][Math.floor(e.anim/6)%4]:0;const bob=(fr===1||fr===3)?-1:(!e.moving&&Math.floor(performance.now()/600+(e.x|0))%2?-0.34:0);ctx.save();ctx.translate(Math.round(e.x*Z)/Z,Math.round((e.y+bob)*Z)/Z);if(e.slipping)ctx.rotate(Math.sin(performance.now()/50)*.6);if(e.dir<0)ctx.scale(-1,1);ctx.drawImage(SPR[e.animal][fr],-11,-24);ctx.restore();ctx.globalAlpha=1}}
- for(const c of race.confetti){ctx.fillStyle=c.c;ctx.fillRect(c.x,c.y,2,2)}
- // overlays in screen space
+ for(const v of vis){if(v.p)ctx.drawImage(v.p.spr,v.p.x,v.p.y);else if(v.e){const e=v.e;ctx.globalAlpha=e.alpha??1;
+  const fr=e.moving?[1,0,3,0][Math.floor(e.anim/6)%4]:0;ctx.save();ctx.translate(Math.round(e.x),Math.round(e.y));if(e.dir<0)ctx.scale(-1,1);
+  ctx.drawImage(SPR[e.animal]?SPR[e.animal][fr]:SPR['bear'][0],-11,-24);ctx.restore();ctx.globalAlpha=1}}
  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.imageSmoothingEnabled=true;
- for(const l of labels){const sx=(l.x-camX)*Z,sy=(l.y-camY)*Z;if(sx<-100||sx>innerWidth+100||sy<-30||sy>innerHeight+30)continue;ctx.globalAlpha=.85;bubble(sx,sy,l.t,{bg:'#fff4c2',size:12});ctx.globalAlpha=1}
- const order=ppl.filter(e=>e!==me).concat([me]);
- for(const e of order){const sx=(e.x-camX)*Z,sy=(e.y-camY)*Z;if(sx<-80||sx>innerWidth+80||sy<-40||sy>innerHeight+80)continue;const d=Math.hypot(e.x-me.x,e.y-me.y);
-  const a=(e.alpha??1)*(e===me||d<110?1:.38);ctx.globalAlpha=a;
-  if(e.podium){const P=PRAISE[e.podium-1];bubble(sx,sy-26*Z-4,`${P[0]} ${P[1]}！`,{tail:true,bg:'#fff1a8',border:'#b07800',size:14})}
-  else if(!e.racing)bubble(sx,sy-26*Z-4,e.cheer?'👏 恭喜晒！':e.watch?'📣 加油！':e.thought,{g:e.gender,tail:true,bg:e===me?'#ffe4ef':(chats.has(e.id)?'#e6f7ef':'#fff'),border:e===me?'#d9488f':'#3b2a33'});
-  ctx.font='bold 10px sans-serif';const nm=(e.medal?e.medal+' ':'')+e.name+(e.kind==='bot'&&(NET.room||remotes.size)?' 🤖':'');const nw=ctx.measureText(nm).width+8;ctx.fillStyle=e===me?'#ffe4ef':'rgba(255,255,255,.85)';ctx.fillRect(sx-nw/2,sy+4,nw,13);ctx.fillStyle=e===me?'#d9488f':'#3b2a33';ctx.fillText(nm,sx-nw/2+4,sy+14);ctx.globalAlpha=1}
- // minimap
- mctx.drawImage(MMBG,0,0,MW*2,MH*2,0,0,168,120);const k=168/WW;
- mctx.fillStyle='#fff';for(const b of bots)if(b.alpha>.5)mctx.fillRect(b.x*k-1,b.y*k*(120/(WH*k))/1-1,2,2);
- for(const r of remotes.values()){mctx.fillStyle='#ffd23f';mctx.fillRect(r.x*k-2,r.y*(120/WH)-2,4,4)}
- mctx.fillStyle='#e0457b';mctx.fillRect(me.x*k-2,me.y*(120/WH)-2,4,4);
- mctx.strokeStyle='rgba(255,255,255,.8)';mctx.strokeRect(camX*k,camY*(120/WH),vw*k,vh*(120/WH));
- // HUD count
- $('#netPill').textContent=netLabel();
- const n=1+bots.filter(b=>b.alpha>.5).length+remotes.size;$('#pcount').textContent=n<=1?'得你一個':`${n} 人喺度`;
+ for(const e of allPeople()){const sx=(e.x-camX)*Z,sy=(e.y-camY)*Z;bubble(sx,sy-26*Z,e.thought,{bg:e===me?'#ffe4ef':'#fff'});
+  ctx.font='bold 10px sans-serif';const nm=e.name;const nw=ctx.measureText(nm).width+8;ctx.fillStyle='rgba(255,255,255,.85)';ctx.fillRect(sx-nw/2,sy+4,nw,13);ctx.fillStyle='#3b2a33';ctx.fillText(nm,sx-nw/2+4,sy+14)}
+ mctx.drawImage(MMBG,0,0,MW*2,MH*2,0,0,168,120);
+ const k=168/WW;mctx.fillStyle='#e0457b';mctx.fillRect(me.x*k-2,me.y*(120/WH)-2,4,4);
+ $('#pcount').textContent=`${1+remotes.size} 真人在線 · ${bots.length} 電腦`;
 }
-setInterval(()=>{$('#clock').textContent=hhmm(new Date())},1000);$('#clock').textContent=hhmm(new Date());
+setInterval(()=>{$('#clock').textContent=hhmm(new Date())},1000);
 let last=performance.now();
-function loop(now){const dt=Math.min(6,(now-last)/16.67);last=now;lastDt=dt;if(inWorld&&me){update(dt);draw()}requestAnimationFrame(loop)}
+function loop(now){const dt=Math.min(6,(now-last)/16.67);last=now;if(inWorld&&me){update(dt);draw()}requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 </script>
 </body>
